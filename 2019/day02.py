@@ -14,9 +14,12 @@ def process(code: List[int]) -> List[int]:
         elif opcode == 2:
             code[output] = code[input_1] * code[input_2]
         elif opcode == 99:
-            return code
+            break
         else:
             assert False, f"Unrecognised opcode: {opcode}"
+
+    return code
+
 
 def initialize_memory(memory: str, noun: int = 12, verb: int = 2) -> List[int]:
     """
@@ -28,7 +31,10 @@ def initialize_memory(memory: str, noun: int = 12, verb: int = 2) -> List[int]:
     return code
 
 def execute(memory: str, noun: int = 12, verb = 2) -> int:
-    return process(initialize_memory(memory, noun, verb))[0] 
+    """
+    Initialize the memory and process the code.
+    """
+    return process(initialize_memory(memory, noun, verb))[0]
 
 def get_memory() -> str:
     """
@@ -55,7 +61,10 @@ def main2(desired: int = 19690720) -> int:
     for noun in range(len(code)):
         for verb in range(len(code)):
             if execute(memory, noun, verb) == desired:
-                return (100 * noun) + verb
+                result = (100 * noun) + verb
+                break
+    return result
+
 
 
 if __name__ ==  '__main__':
