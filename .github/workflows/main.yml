@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Mypy Check
-      uses: jpetrucciani/mypy-check@0.730
-      with:
-        path:  '../../2019'
+      - uses: actions/checkout@master
+      - name: Mypy Check
+        uses: jpetrucciani/mypy-check@0.730'
