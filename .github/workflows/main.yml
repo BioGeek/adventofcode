@@ -1,13 +1,20 @@
 name: CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+  prospector:
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@master
-      - name: Mypy Check
-        uses: jpetrucciani/mypy-check@0.730'
+      - uses: actions/checkout@v1
+      - uses: jpetrucciani/prospector-check@master
+  mypy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - uses: jpetrucciani/mypy-check@master
+  black:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - uses: jpetrucciani/black-check@master
