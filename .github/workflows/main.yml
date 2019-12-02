@@ -10,5 +10,3 @@ jobs:
     steps:
     - name: Mypy Check
       uses: jpetrucciani/mypy-check@0.730
-      with:
-        path:  '2019'
