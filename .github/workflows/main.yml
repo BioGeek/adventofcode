@@ -11,4 +11,4 @@ jobs:
     - name: Mypy Check
       uses: jpetrucciani/mypy-check@0.730
       with:
-        path:  '../..'
+        path:  '../../2019'
