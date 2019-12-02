@@ -4,8 +4,8 @@ member-warnings: false
 test-warnings: false
 
 ignore-paths:
-  - 2017
-  - 2018
+  - '2017'
+  - '2018'
 
 ignore-patterns:
   - (^|/)\..+
