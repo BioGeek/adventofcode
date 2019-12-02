@@ -1,4 +1,4 @@
-from typing import List, Callable
+from typing import List
 
 def process(code: List[int]) -> List[int]:
     """
@@ -16,26 +16,47 @@ def process(code: List[int]) -> List[int]:
         elif opcode == 99:
             return code
         else:
-            raise RuntimeError("Shouldn't get here!")
+            assert False, f"Unrecognised opcode: {opcode}"
 
-def restore(raw: str) -> List[int]:
+def initialize_memory(memory: str, noun: int = 12, verb: int = 2) -> List[int]:
     """
-    restore the gravity assist program to the "1202 program alarm" state.
+    Initialize the memory at addresses 1 and 2.
     """
-    code = [int(x) for x in  raw.split(',')]
-    code[1] = 12
-    code[2] = 2
+    code = [int(x) for x in  memory.split(',')]
+    code[1] = noun
+    code[2] = verb
     return code
 
+def execute(memory: str, noun: int = 12, verb = 2) -> int:
+    return process(initialize_memory(memory, noun, verb))[0] 
 
-def main(func: Callable) -> int:
+def get_memory() -> str:
+    """
+    Read in the data.
+    """
+    with open('data/day02.txt') as f:
+        memory = f.read()
+    return memory
+
+
+def main() -> int:
     """
     What value is left at position 0 after the program halts?
     """
-    with open('data/day02.txt') as f:
-        code = f.read()
+    memory = get_memory()
+    return execute(memory)
 
-    return func(restore(code))[0]
+def main2(desired: int = 19690720) -> int:
+    """
+    What pair of inputs produces the desired output?
+    """
+    memory = get_memory()
+    code = initialize_memory(memory)
+    for noun in range(len(code)):
+        for verb in range(len(code)):
+            if execute(memory, noun, verb) == desired:
+                return (100 * noun) + verb
+
 
 if __name__ ==  '__main__':
     assert process([1,0,0,0,99]) == [2,0,0,0,99]
@@ -44,4 +65,5 @@ if __name__ ==  '__main__':
     assert process([1,1,1,4,99,5,6,0,99]) == [30,1,1,4,2,5,6,0,99]
     assert process([1,9,10,3,2,3,11,0,99,30,40,50]) == [3500,9,10,70,2,3,11,0,99,30,40,50]
 
-    print(main(process))
+    print(main())
+    print(main2())
