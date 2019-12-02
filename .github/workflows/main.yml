@@ -1,0 +1,14 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Mypy Check
+      uses: jpetrucciani/mypy-check@0.730
+      with:
+        path:  '../..'
