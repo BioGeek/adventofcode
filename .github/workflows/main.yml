@@ -13,6 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: jpetrucciani/mypy-check@master
+        with:
+          path: 2019 
   black:
     runs-on: ubuntu-18.04
     steps:
