@@ -3,11 +3,6 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  prospector:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v1
-      - uses: jpetrucciani/prospector-check@master
   mypy:
     runs-on: ubuntu-18.04
     steps:
