@@ -1,5 +1,5 @@
 from collections import defaultdict
-from typing import Dict, Tuple, List, Union
+from typing import Dict, Tuple, List
 from pprint import pprint
 from functools import reduce
 
@@ -86,16 +86,16 @@ def main(part=1) -> int:
 
 if __name__ == '__main__':
     wires_1 = ["R8,U5,L5,D3", "U7,R6,D4,L4"]
-    assert find_crossing_wires(wires_1) == 6
-    # draw(wires)
-
     wires_2 = ["R75,D30,R83,U83,L12,D49,R71,U7,L72",
                "U62,R66,U55,R34,D71,R55,D58,R83"]
-    assert find_crossing_wires(wires_2) == 159
-
     wires_3 = ["R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51",
                "U98,R91,D20,R16,D67,R40,U7,R15,U6,R7"]
+
+    assert find_crossing_wires(wires_1) == 6
+    assert find_crossing_wires(wires_2) == 159
     assert find_crossing_wires(wires_3) == 135
+
+    # draw(wires_1)
 
     print(main(part=1))
 
@@ -104,4 +104,3 @@ if __name__ == '__main__':
     assert find_minimal_delay(wires_3) == 410
 
     print(main(part=2))
-    # print(main(part=2))
