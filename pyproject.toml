@@ -12,7 +12,7 @@ exclude = '''
   | build
   | dist
   # The following are specific to this repository
+  | 2017
   | 2018
-  | 2019
 )/
 '''
