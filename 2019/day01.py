@@ -30,8 +30,8 @@ def main(func: Callable) -> int:
     What is the sum of the fuel requirements for all of
     the modules on your spacecraft?
     """
-    with open("data/day01.txt") as f:
-        masses = map(int, f.read().splitlines())
+    with open("data/day01.txt") as fh:
+        masses = map(int, fh.read().splitlines())
 
     return sum(func(mass) for mass in masses)
 

@@ -1,8 +1,4 @@
-from collections import defaultdict
 from typing import Dict, Tuple, List
-from pprint import pprint
-from functools import reduce
-
 
 Coordinates = Dict[Tuple[int, int], int]
 
@@ -19,7 +15,7 @@ def create_coords(wire: str) -> Coordinates:
     length = 0
     for instruction in wire.split(","):
         direction, distance = instruction[0], int(instruction[1:])
-        for step in range(distance):
+        for _ in range(distance):
             if direction == "R":
                 x += 1
             elif direction == "L":
@@ -50,8 +46,10 @@ def find_crossing_wires(wires: List[str]) -> int:
 
 
 def find_minimal_delay(wires: List[str]) -> int:
-    """Calculate the number of steps each wire takes to reach each intersection; 
-    choose the intersection where the sum of both wires' steps is lowest."""
+    """
+    Calculate the number of steps each wire takes to reach each intersection; 
+    choose the intersection where the sum of both wires' steps is lowest.
+    """
     coords_1, coords_2 = [create_coords(wire) for wire in wires]
     common_coords = set(coords_1.keys()).intersection(set(coords_2.keys()))
     return min(coords_1[c] + coords_2[c] for c in common_coords)
@@ -86,29 +84,30 @@ def draw(wires):
 def main(part=1) -> int:
     wires = get_data()
     if part == 1:
-        return find_crossing_wires(wires)
+        result = find_crossing_wires(wires)
     else:
-        return find_minimal_delay(wires)
+        result = find_minimal_delay(wires)
+    return result
 
 
 if __name__ == "__main__":
-    wires_1 = ["R8,U5,L5,D3", "U7,R6,D4,L4"]
-    wires_2 = ["R75,D30,R83,U83,L12,D49,R71,U7,L72", "U62,R66,U55,R34,D71,R55,D58,R83"]
-    wires_3 = [
+    WIRES_1 = ["R8,U5,L5,D3", "U7,R6,D4,L4"]
+    WIRES_2 = ["R75,D30,R83,U83,L12,D49,R71,U7,L72", "U62,R66,U55,R34,D71,R55,D58,R83"]
+    WIRES_3 = [
         "R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51",
         "U98,R91,D20,R16,D67,R40,U7,R15,U6,R7",
     ]
 
-    assert find_crossing_wires(wires_1) == 6
-    assert find_crossing_wires(wires_2) == 159
-    assert find_crossing_wires(wires_3) == 135
+    assert find_crossing_wires(WIRES_1) == 6
+    assert find_crossing_wires(WIRES_2) == 159
+    assert find_crossing_wires(WIRES_3) == 135
 
     # draw(wires_1)
 
     print(main(part=1))
 
-    assert find_minimal_delay(wires_1) == 30
-    assert find_minimal_delay(wires_2) == 610
-    assert find_minimal_delay(wires_3) == 410
+    assert find_minimal_delay(WIRES_1) == 30
+    assert find_minimal_delay(WIRES_2) == 610
+    assert find_minimal_delay(WIRES_3) == 410
 
     print(main(part=2))
