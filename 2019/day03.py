@@ -51,8 +51,8 @@ def find_minimal_delay(wires: List[str]) -> int:
     choose the intersection where the sum of both wires' steps is lowest.
     """
     coords_1, coords_2 = [create_coords(wire) for wire in wires]
-    common_coords = set(coords_1.keys()).intersection(set(coords_2.keys()))
-    return min(coords_1[c] + coords_2[c] for c in common_coords)
+    common_coordinates = set(coords_1.keys()).intersection(set(coords_2.keys()))
+    return min(coords_1[c] + coords_2[c] for c in common_coordinates)
 
 
 def draw(wires):
