@@ -1,5 +1,6 @@
 from collections import Counter
 
+
 def password(i: int, part: int = 1) -> bool:
     n = str(i)
     result = len(n) == 6 and two_adjecent_digits(n) and never_decreases(n)
@@ -8,11 +9,14 @@ def password(i: int, part: int = 1) -> bool:
     else:
         return result and not_part_of_larger_group(n)
 
+
 def two_adjecent_digits(n: str) -> bool:
     return any(i == j for i, j in zip(n, n[1:]))
 
+
 def never_decreases(n: str) -> bool:
     return all(i <= j for i, j in zip(n, n[1:]))
+
 
 def not_part_of_larger_group(n: str) -> bool:
     c = Counter(n)
@@ -22,11 +26,13 @@ def not_part_of_larger_group(n: str) -> bool:
         return False
     else:
         return False
-    
-def main(low: int, high: int, part: int=1) -> int:
+
+
+def main(low: int, high: int, part: int = 1) -> int:
     return sum(password(n, part) for n in range(low, high))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     assert never_decreases("111123")
     assert never_decreases("135679")
     assert two_adjecent_digits("122345")
@@ -43,4 +49,3 @@ if __name__ == '__main__':
     assert not_part_of_larger_group("111122")
 
     print(main(low, high, part=2))
-
