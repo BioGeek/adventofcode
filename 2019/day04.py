@@ -1,7 +1,7 @@
 from collections import Counter
 
 
-def password(i: int, part: int = 1) -> bool:
+def is_password(i: int, part: int = 1) -> bool:
     n = str(i)
     result = len(n) == 6 and two_adjecent_digits(n) and never_decreases(n)
     if part == 1:
@@ -29,16 +29,16 @@ def not_part_of_larger_group(n: str) -> bool:
 
 
 def main(low: int, high: int, part: int = 1) -> int:
-    return sum(password(n, part) for n in range(low, high))
+    return sum(is_password(n, part) for n in range(low, high))
 
 
 if __name__ == "__main__":
     assert never_decreases("111123")
     assert never_decreases("135679")
     assert two_adjecent_digits("122345")
-    assert password(111111)
-    assert not password(223450)
-    assert not password(123789)
+    assert is_password(111111)
+    assert not is_password(223450)
+    assert not is_password(123789)
 
     low = 265275
     high = 781584
