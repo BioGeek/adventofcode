@@ -20,12 +20,7 @@ def never_decreases(n: str) -> bool:
 
 def not_part_of_larger_group(n: str) -> bool:
     c = Counter(n)
-    if 2 in c.values():
-        return True
-    elif any(v > 2 for v in c.values()):
-        return False
-    else:
-        return False
+    return 2 in c.values()
 
 
 def main(low: int, high: int, part: int = 1) -> int:
