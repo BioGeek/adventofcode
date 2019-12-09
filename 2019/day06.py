@@ -34,7 +34,7 @@ Planets = DefaultDict[str, List[str]]
 
 
 def get_planets(lines: List[str]) -> Planets:
-    planets = defaultdict(list)
+    planets = defaultdict(list)  # type: Planets
     for line in lines:
         a, b = line.split(")")
         planets[a].append(b)

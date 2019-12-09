@@ -1,4 +1,4 @@
-from typing import List, Union
+from typing import List
 
 WIDTH = 25
 HEIGHT = 6
@@ -10,33 +10,33 @@ def get_data() -> str:
     return data
 
 
-def main(
-    data: str, width: int = WIDTH, height: int = HEIGHT, part: int = 1
-) -> Union[int, str]:
+def main1(data: str, width: int = WIDTH, height: int = HEIGHT) -> int:
     layers = make_layers(data, width, height)
 
-    if part == 1:
-        zeros = float("inf")
-        chosen = ""
-        for layer in layers:
-            if layer.count("0") < zeros:
-                zeros = layer.count("0")
-                chosen = layer
-        result = chosen.count("1") * chosen.count("2")
-    else:
-        # 0 is black, 1 is white, and 2 is transparent.
-        image = []
-        colors = {"0": "■", "1": "□"}
-        transposed = list(zip(*layers))
-        for stack in transposed:
-            while stack[0] == "2":
-                stack = stack[1:]
-            image.append(colors[stack[0]])
+    zeros = float("inf")
+    chosen = ""
+    for layer in layers:
+        if layer.count("0") < zeros:
+            zeros = layer.count("0")
+            chosen = layer
+    return chosen.count("1") * chosen.count("2")
 
-        result = "\n".join(
-            ["".join(image[i : i + width]) for i in range(0, len(image), width)]
-        )
 
+def main2(data: str, width: int = WIDTH, height: int = HEIGHT) -> str:
+    layers = make_layers(data, width, height)
+
+    # 0 is black, 1 is white, and 2 is transparent.
+    image = []
+    colors = {"0": "█", "1": " "}
+    transposed = list(zip(*layers))
+    for stack in transposed:
+        while stack[0] == "2":
+            stack = stack[1:]
+        image.append(colors[stack[0]])
+
+    result = "\n".join(
+        ["".join(image[i : i + width]) for i in range(0, len(image), width)]
+    )
     return result
 
 
@@ -47,11 +47,11 @@ def make_layers(data: str, width: int = WIDTH, height: int = HEIGHT) -> List[str
 
 if __name__ == "__main__":
     data = "123456789012"
-    assert main(data, width=3, height=2) == 1
+    assert main1(data, width=3, height=2) == 1
 
     # print(main(get_data()))
 
     data = "0222112222120000"
-    assert main(data, width=2, height=2, part=2) == "■□\n□■"
+    assert main2(data, width=2, height=2) == "█ \n █"
 
-    print(main(get_data(), part=2))
+    print(main2(get_data()))
