@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Union
 
 WIDTH = 25
 HEIGHT = 6
@@ -10,7 +10,9 @@ def get_data() -> str:
     return data
 
 
-def main(data: str, width: int = WIDTH, height: int = HEIGHT, part: int = 1) -> int:
+def main(
+    data: str, width: int = WIDTH, height: int = HEIGHT, part: int = 1
+) -> Union[int, str]:
     layers = make_layers(data, width, height)
 
     if part == 1:
@@ -21,6 +23,19 @@ def main(data: str, width: int = WIDTH, height: int = HEIGHT, part: int = 1) -> 
                 zeros = layer.count("0")
                 chosen = layer
         result = chosen.count("1") * chosen.count("2")
+    else:
+        # 0 is black, 1 is white, and 2 is transparent.
+        image = []
+        colors = {"0": "■", "1": "□"}
+        transposed = list(zip(*layers))
+        for stack in transposed:
+            while stack[0] == "2":
+                stack = stack[1:]
+            image.append(colors[stack[0]])
+
+        result = "\n".join(
+            ["".join(image[i : i + width]) for i in range(0, len(image), width)]
+        )
 
     return result
 
@@ -34,4 +49,9 @@ if __name__ == "__main__":
     data = "123456789012"
     assert main(data, width=3, height=2) == 1
 
-    print(main(get_data()))
+    # print(main(get_data()))
+
+    data = "0222112222120000"
+    assert main(data, width=2, height=2, part=2) == "■□\n□■"
+
+    print(main(get_data(), part=2))
