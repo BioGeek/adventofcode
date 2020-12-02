@@ -16,4 +16,4 @@ jobs:
       - uses: actions/checkout@v1
       - uses: jpetrucciani/black-check@master
         with:
-          path: 2020 
+          path: 20[19|20] 
