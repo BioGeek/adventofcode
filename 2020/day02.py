@@ -13,13 +13,13 @@ class Policy:
 def is_valid_password(policy: Policy, password: str, part=1) -> bool:
     """Returns if a password is valid according to the policy."""
     if part == 1:
-        # The password policy indicates the lowest and highest number of times a given 
+        # The password policy indicates the lowest and highest number of times a given
         # letter must appear for the password to be valid.
         return policy.lower <= password.count(policy.char) <= policy.upper
     else:
-        # The policy describes two positions in the password, where 1 means the first 
-        # character, 2 means the second character, and so on. Exactly one of these 
-        # positions must contain the given letter. Other occurrences of the letter are 
+        # The policy describes two positions in the password, where 1 means the first
+        # character, 2 means the second character, and so on. Exactly one of these
+        # positions must contain the given letter. Other occurrences of the letter are
         # irrelevant for the purposes of policy enforcement.
         return (
             sum(
