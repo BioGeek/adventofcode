@@ -47,7 +47,7 @@ def find_crossing_wires(wires: List[str]) -> int:
 
 def find_minimal_delay(wires: List[str]) -> int:
     """
-    Calculate the number of steps each wire takes to reach each intersection; 
+    Calculate the number of steps each wire takes to reach each intersection;
     choose the intersection where the sum of both wires' steps is lowest.
     """
     coords_1, coords_2 = [create_coords(wire) for wire in wires]

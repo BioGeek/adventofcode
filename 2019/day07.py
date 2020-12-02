@@ -1,10 +1,11 @@
 from typing import Tuple, Callable, List, Any, Optional
 import itertools
 
+
 class ComputationFinished(Exception):
     pass
 
- 
+
 class Computer:
     def __init__(self, memory: List[int], input_: Tuple = (), pointer: int = 0) -> None:
         self.memory = memory
@@ -109,7 +110,8 @@ def calculate(data: str, input_: Tuple = ()) -> int:
     computer.run()
     return computer.result if computer.result is not None else computer.memory[-1]
 
-def main(data: str, part:int=1) -> int:
+
+def main(data: str, part: int = 1) -> int:
     max_thruster = 0
     if part == 1:
         for (a, b, c, d, e) in itertools.permutations(range(5)):
@@ -117,28 +119,43 @@ def main(data: str, part:int=1) -> int:
             B = calculate(data, (b, A))
             C = calculate(data, (c, B))
             D = calculate(data, (d, C))
-            thruster =  calculate(data, (e, D))
+            thruster = calculate(data, (e, D))
             if thruster > max_thruster:
                 max_thruster = thruster
     else:
         thruster = None
-        for (a, b, c, d, e) in itertools.permutations(range(5,10)):
+        for (a, b, c, d, e) in itertools.permutations(range(5, 10)):
             while True:
                 inp = thruster if thruster is not None else 0
                 A = calculate(data, (a, inp))
                 B = calculate(data, (b, A))
                 C = calculate(data, (c, B))
                 D = calculate(data, (d, C))
-                thruster =  calculate(data, (e, D))
+                thruster = calculate(data, (e, D))
                 if thruster > max_thruster:
                     max_thruster = thruster
     return max_thruster
 
-if __name__ == '__main__':
-    assert main('3,15,3,16,1002,16,10,16,1,16,15,15,4,15,99,0,0') == 43210
-    assert main('3,23,3,24,1002,24,10,24,1002,23,-1,23,101,5,23,23,1,24,23,23,4,23,99,0,0') == 54321
-    assert main('3,31,3,32,1002,32,10,32,1001,31,-2,31,1007,31,0,33,1002,33,7,33,1,33,31,31,1,32,31,31,4,31,99,0,0,0') == 65210
+
+if __name__ == "__main__":
+    assert main("3,15,3,16,1002,16,10,16,1,16,15,15,4,15,99,0,0") == 43210
+    assert (
+        main("3,23,3,24,1002,24,10,24,1002,23,-1,23,101,5,23,23,1,24,23,23,4,23,99,0,0")
+        == 54321
+    )
+    assert (
+        main(
+            "3,31,3,32,1002,32,10,32,1001,31,-2,31,1007,31,0,33,1002,33,7,33,1,33,31,31,1,32,31,31,4,31,99,0,0,0"
+        )
+        == 65210
+    )
 
     print(main(get_data()))
-    
-    assert main('3,26,1001,26,-4,26,3,27,1002,27,2,27,1,27,26,27,4,27,1001,28,-1,28,1005,28,6,99,0,0,5', part=2) == 139629729
+
+    assert (
+        main(
+            "3,26,1001,26,-4,26,3,27,1002,27,2,27,1,27,26,27,4,27,1001,28,-1,28,1005,28,6,99,0,0,5",
+            part=2,
+        )
+        == 139629729
+    )
