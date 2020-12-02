@@ -17,4 +17,3 @@ jobs:
       - uses: jpetrucciani/black-check@master
         with:
           path: 2019
-          path: 2020
