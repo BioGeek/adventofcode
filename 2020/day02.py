@@ -21,14 +21,8 @@ def is_valid_password(policy: Policy, password: str, part=1) -> bool:
         # character, 2 means the second character, and so on. Exactly one of these
         # positions must contain the given letter. Other occurrences of the letter are
         # irrelevant for the purposes of policy enforcement.
-        return (
-            sum(
-                [
-                    password[policy.lower - 1] == policy.char,
-                    password[policy.upper - 1] == policy.char,
-                ]
-            )
-            == 1
+        return (password[policy.lower - 1] == policy.char) != (
+            password[policy.upper - 1] == policy.char
         )
 
 
