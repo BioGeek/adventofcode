@@ -17,7 +17,7 @@ def expenses(report: str) -> Iterator[int]:
 
 
 def main(part: int = 1) -> int:
-    with open("data/day01.txt") as f:
+    with open("2020/data/day01.txt") as f:
         report = f.read()
     return sum_to_2020(expenses(report), part)
 

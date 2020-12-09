@@ -39,7 +39,7 @@ def parse(data: str) -> Iterator[Tuple[Policy, str]]:
 
 
 def main(part: int = 1):
-    with open("data/day02.txt") as fh:
+    with open("2020/data/day02.txt") as fh:
         data = fh.read()
     return sum(
         is_valid_password(policy, password, part) for policy, password in parse(data)
