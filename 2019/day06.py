@@ -1,6 +1,6 @@
-from collections import defaultdict
 import sys
-from typing import List, DefaultDict
+from collections import defaultdict
+from typing import DefaultDict, List
 
 sys.setrecursionlimit(2000)
 

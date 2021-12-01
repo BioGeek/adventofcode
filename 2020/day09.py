@@ -1,5 +1,5 @@
-from typing import Dict, Generator, List, Tuple
 from itertools import combinations
+from typing import Dict, Generator, List, Tuple
 
 
 def create_numbers(data: str) -> List[int]:

@@ -1,4 +1,4 @@
-from typing import Dict, Tuple, List
+from typing import Dict, List, Tuple
 
 Coordinates = Dict[Tuple[int, int], int]
 
