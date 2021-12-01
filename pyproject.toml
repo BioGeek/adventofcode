@@ -10,6 +10,7 @@ nox = "^2021.10.1"
 nox-poetry = "^0.9.0"
 
 [tool.poetry.dev-dependencies]
+black = "^21.11b1"
 
 [build-system]
 requires = ["poetry>=0.12"]
