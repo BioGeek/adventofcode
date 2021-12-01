@@ -78,7 +78,7 @@ class Computer:
         self.memory[par1] = next(self.input)
 
     def op_print(self, par1: int) -> None:
-        self.result = self.memory[par1]
+        self.result = self.memory[par1]  # type: ignore
 
     def op_exit(self) -> None:
         raise ComputationFinished
@@ -99,7 +99,7 @@ class Computer:
 
 
 def get_data() -> str:
-    with open("data/day07.txt") as f:
+    with open("./data/day07.txt") as f:
         data = f.read()
     return data
 
@@ -123,7 +123,7 @@ def main(data: str, part: int = 1) -> int:
             if thruster > max_thruster:
                 max_thruster = thruster
     else:
-        thruster = None
+        thruster = None  # type: ignore
         for (a, b, c, d, e) in itertools.permutations(range(5, 10)):
             while True:
                 inp = thruster if thruster is not None else 0

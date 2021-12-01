@@ -22,3 +22,14 @@ def lint(session):
     args = session.posargs or locations
     session.install("flake8", "flake8-black", "flake8-isort", "flake8-bugbear")
     session.run("flake8", *args)
+
+
+@nox.session(python="3.10")
+def mypy(session):
+    session.install("mypy")
+    if session.posargs:
+        session.run("mypy", *session.posargs)
+    else:
+        for location in locations:
+            if location != "noxfile.py":
+                session.run("mypy", location)

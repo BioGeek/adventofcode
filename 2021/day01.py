@@ -1,9 +1,11 @@
 from itertools import pairwise, tee
-from typing import Iterator
+from typing import Iterable, Tuple, TypeVar
+
+_T_co = TypeVar("_T_co", covariant=True)
 
 
-def triplewise(iterable):
-    """triplewise('ABCDEFG') --> ABC BCD CDE DEF EFG"""
+def tripletwise(iterable: Iterable[_T_co]) -> zip[Tuple[_T_co, _T_co, _T_co]]:
+    """tripletwise('ABCDEFG') --> ABC BCD CDE DEF EFG"""
     a, b, c = tee(iterable, 3)
     next(b, None)
     next(c, None)
@@ -11,13 +13,13 @@ def triplewise(iterable):
     return zip(a, b, c)
 
 
-def sonar_sweep(sea_floor_depths: Iterator[int], part: int = 1) -> int:
+def sonar_sweep(sea_floor_depths: Iterable[int], part: int = 1) -> int:
     if part == 1:
         return sum(b > a for a, b in pairwise(sea_floor_depths))
-    return sonar_sweep((a + b + c for a, b, c in triplewise(sea_floor_depths)), part=1)
+    return sonar_sweep((a + b + c for a, b, c in tripletwise(sea_floor_depths)), part=1)
 
 
-def sea_floor_depths(report: str) -> Iterator[int]:
+def sea_floor_depths(report: str) -> Iterable[int]:
     return map(int, report.splitlines())
 
 
@@ -40,14 +42,14 @@ if __name__ == "__main__":
 263"""
     assert sonar_sweep(sea_floor_depths(report), part=1) == 7
     assert sonar_sweep(sea_floor_depths(report), part=2) == 5
-    assert list(triplewise("ABCDEFG")) == [
+    assert list(tripletwise("ABCDEFG")) == [
         ("A", "B", "C"),
         ("B", "C", "D"),
         ("C", "D", "E"),
         ("D", "E", "F"),
         ("E", "F", "G"),
     ]
-    assert list(triplewise(sea_floor_depths(report))) == [
+    assert list(tripletwise(sea_floor_depths(report))) == [
         (199, 200, 208),
         (200, 208, 210),
         (208, 210, 200),

@@ -79,7 +79,7 @@ class Computer:
         self.memory[par1] = next(self.input)
 
     def op_print(self, par1: int) -> None:
-        self.result = self.memory[par1]
+        self.result = self.memory[par1]  # type: ignore
 
     def op_exit(self) -> None:
         raise ComputationFinished
