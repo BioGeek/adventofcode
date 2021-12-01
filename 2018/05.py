@@ -1,11 +1,11 @@
 import re
 
+
 def main(part=1, data=None):
     if data is None:
-        with open('data/05.txt') as f:
+        with open("data/05.txt") as f:
             data = f.read()
     return len(reaction(data))
-
 
 
 """
@@ -33,29 +33,27 @@ def reaction(polymer):
         return polymer2
 """
 
+
 def is_match(a, b):
-    return (a.lower() == b.lower()) and ((a.isupper() and b.islower()) or (a.islower() and b.isupper()))
+    return (a.lower() == b.lower()) and (
+        (a.isupper() and b.islower()) or (a.islower() and b.isupper())
+    )
+
 
 def reaction(polymer):
-    return re.findall(, polymer)
+    # return re.findall(, polymer)
+    pass
 
-    
-    
-    
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # assert reaction('Aa') == ''
     # assert reaction('abBA') == ''
     # assert reaction('abAB') == 'abAB'
     # assert reaction('aabAAB') == 'aabAAB'
     # assert reaction('dabAcCaCBAcCcaDA') == 'dabCBAcaDA'
     # print(main())
-    print(reaction('Aa'))
-    print(reaction('abBA'))
-    print(reaction('abAB'))
-    print(reaction('aabAAB'))
-    print(reaction('dabAcCaCBAcCcaDA'))
-
-    
-    
-    
+    print(reaction("Aa"))
+    print(reaction("abBA"))
+    print(reaction("abAB"))
+    print(reaction("aabAAB"))
+    print(reaction("dabAcCaCBAcCcaDA"))
