@@ -9,11 +9,11 @@ jobs:
       - uses: actions/checkout@v1
       - uses: jpetrucciani/mypy-check@master
         with:
-          path: 2020 
+          path: 2021
   black:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v1
       - uses: jpetrucciani/black-check@master
         with:
-          path: 2020
+          path: 2021
