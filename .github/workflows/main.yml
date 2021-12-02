@@ -4,14 +4,14 @@ on: [push, pull_request]
 
 jobs:
   mypy:
-    runs-on: ubuntu-18.04
+    runs-on: 3.10.0-alpine3.15
     steps:
       - uses: actions/checkout@v1
       - uses: jpetrucciani/mypy-check@master
         with:
           path: 2021
   black:
-    runs-on: ubuntu-18.04
+    runs-on: 3.10.0-alpine3.15
     steps:
       - uses: actions/checkout@v1
       - uses: jpetrucciani/black-check@master
