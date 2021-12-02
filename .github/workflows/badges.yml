@@ -5,7 +5,7 @@ on:
 
   workflow_dispatch:                             # allow to manually start the workflow
 
-  # push:                                          # (disabled) run on push, be carefull with this setting
+# push:                                          # (disabled) run on push, be carefull with this setting
                                                  # as the workflow should only be triggered at a rate lower than
                                                  # 4 times a hour to keep traffic on aoc site low
 jobs:
@@ -23,7 +23,7 @@ jobs:
           starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)?2021'             # Regular expression that finds the content of the stars badge iun your file.
           daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)?2021'  # Regular expression that finds the content of the days completed badge iun your file.
 
-     - uses: joblo2213/aoc-badges-action@v3
+      - uses: joblo2213/aoc-badges-action@v3
         with:
           userid: 23810                          # your user id, see setup on how to obtain
           session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
@@ -32,16 +32,16 @@ jobs:
           starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)?2020'             # Regular expression that finds the content of the stars badge iun your file.
           daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)?2020'  # Regular expression that finds the content of the days completed badge iun your file.
 
-     - uses: joblo2213/aoc-badges-action@v3
+      - uses: joblo2213/aoc-badges-action@v3
         with:
           userid: 23810                          # your user id, see setup on how to obtain
           session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
-          year: 2019                                                                                    # The year for which stats should be retrieved
+          year: 2019                                                                                     # The year for which stats should be retrieved
           file: 'README.md'                                                                              # The file that contains the badges
           starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)?2019'             # Regular expression that finds the content of the stars badge iun your file.
           daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)?2019'  # Regular expression that finds the content of the days completed badge iun your file.
 
-     - uses: joblo2213/aoc-badges-action@v3
+      - uses: joblo2213/aoc-badges-action@v3
         with:
           userid: 23810                          # your user id, see setup on how to obtain
           session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
@@ -50,7 +50,7 @@ jobs:
           starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)?2018'             # Regular expression that finds the content of the stars badge iun your file.
           daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)?2018'  # Regular expression that finds the content of the days completed badge iun your file.
 
-     - uses: joblo2213/aoc-badges-action@v3
+      - uses: joblo2213/aoc-badges-action@v3
         with:
           userid: 23810                          # your user id, see setup on how to obtain
           session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
@@ -59,7 +59,7 @@ jobs:
           starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)?2017'             # Regular expression that finds the content of the stars badge iun your file.
           daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)?2017'  # Regular expression that finds the content of the days completed badge iun your file.
 
-     - uses: joblo2213/aoc-badges-action@v3
+      - uses: joblo2213/aoc-badges-action@v3
         with:
           userid: 23810                          # your user id, see setup on how to obtain
           session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
@@ -68,7 +68,16 @@ jobs:
           starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)?2016'             # Regular expression that finds the content of the stars badge iun your file.
           daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)?2016'  # Regular expression that finds the content of the days completed badge iun your file.
 
-     - uses: joblo2213/aoc-badges-action@v3
+      - uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: 23810                          # your user id, see setup on how to obtain
+          session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
+          year: 2021                                                                                     # The year for which stats should be retrieved
+          file: 'README.md'                                                                              # The file that contains the badges
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)?2021'             # Regular expression that finds the content of the stars badge iun your file.
+          daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)?2021'  # Regular expression that finds the content of the days completed badge iun your file.
+
+      - uses: joblo2213/aoc-badges-action@v3
         with:
           userid: 23810                          # your user id, see setup on how to obtain
           session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
