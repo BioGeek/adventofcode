@@ -18,15 +18,65 @@ jobs:
         with:
           userid: 23810                          # your user id, see setup on how to obtain
           session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
-
-#         Optional inputs:
-#
           year: 2021                                                                                     # The year for which stats should be retrieved
-#         leaderboard: 'https://adventofcode.com/2020/leaderboard/private/view/00000.json'               # The url of the leaderboard from witch the data is fetched. Typically your private leaderboard.
           file: 'README.md'                                                                              # The file that contains the badges
-#         dayRegex: '(?<=https:\/\/img\.shields\.io\/badge\/day%20📅-)[0-9]+(?=-blue)'                   # Regular expression that finds the content of the day badge iun your file.
-          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)'             # Regular expression that finds the content of the stars badge iun your file.
-#         daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)'  # Regular expression that finds the content of the days completed badge iun your file.
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)?2021'             # Regular expression that finds the content of the stars badge iun your file.
+          daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)?2021'  # Regular expression that finds the content of the days completed badge iun your file.
+
+     - uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: 23810                          # your user id, see setup on how to obtain
+          session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
+          year: 2020                                                                                     # The year for which stats should be retrieved
+          file: 'README.md'                                                                              # The file that contains the badges
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)?2020'             # Regular expression that finds the content of the stars badge iun your file.
+          daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)?2020'  # Regular expression that finds the content of the days completed badge iun your file.
+
+     - uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: 23810                          # your user id, see setup on how to obtain
+          session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
+          year: 2019                                                                                    # The year for which stats should be retrieved
+          file: 'README.md'                                                                              # The file that contains the badges
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)?2019'             # Regular expression that finds the content of the stars badge iun your file.
+          daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)?2019'  # Regular expression that finds the content of the days completed badge iun your file.
+
+     - uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: 23810                          # your user id, see setup on how to obtain
+          session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
+          year: 2018                                                                                     # The year for which stats should be retrieved
+          file: 'README.md'                                                                              # The file that contains the badges
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)?2018'             # Regular expression that finds the content of the stars badge iun your file.
+          daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)?2018'  # Regular expression that finds the content of the days completed badge iun your file.
+
+     - uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: 23810                          # your user id, see setup on how to obtain
+          session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
+          year: 2017                                                                                     # The year for which stats should be retrieved
+          file: 'README.md'                                                                              # The file that contains the badges
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)?2017'             # Regular expression that finds the content of the stars badge iun your file.
+          daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)?2017'  # Regular expression that finds the content of the days completed badge iun your file.
+
+     - uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: 23810                          # your user id, see setup on how to obtain
+          session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
+          year: 2016                                                                                     # The year for which stats should be retrieved
+          file: 'README.md'                                                                              # The file that contains the badges
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)?2016'             # Regular expression that finds the content of the stars badge iun your file.
+          daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)?2016'  # Regular expression that finds the content of the days completed badge iun your file.
+
+     - uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: 23810                          # your user id, see setup on how to obtain
+          session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
+          year: 2015                                                                                     # The year for which stats should be retrieved
+          file: 'README.md'                                                                              # The file that contains the badges
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)?2015'             # Regular expression that finds the content of the stars badge iun your file.
+          daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red)?2015'  # Regular expression that finds the content of the days completed badge iun your file.
+
 
       - uses: stefanzweifel/git-auto-commit-action@v4     # Step that pushes these local changes back to your github repo
         with:
