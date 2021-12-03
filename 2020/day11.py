@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import List, NamedTuple
+from typing import Generator, NamedTuple
 
 
 class Seat(NamedTuple):
@@ -18,7 +18,7 @@ class Layout:
         self.width = len(self.grid[0])
         self.height = len(self.grid)
 
-    def one_round(self) -> List[List[Seat]]:
+    def one_round(self) -> None:
         new_grid = []
         for y in range(self.height):
             row = []
@@ -48,7 +48,7 @@ class Layout:
             1 for neighbour in self.neighbours(seat) if self.is_occupied(neighbour)
         )
 
-    def neighbours(self, seat: Seat) -> List[Seat]:
+    def neighbours(self, seat: Seat) -> Generator:
         x, y = seat.x, seat.y
         for (new_x, new_y) in (
             (x + 1, y),

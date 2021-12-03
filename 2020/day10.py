@@ -1,4 +1,4 @@
-from typing import Dict, List, Tuple
+from typing import Any, Dict, List, Tuple
 
 
 def make_adaptors(data: str) -> List[int]:
@@ -43,7 +43,7 @@ def longest_path(graph, start, path=None):
     return deepest_node, max_depth + 1, max_path + [start]
 
 
-def dict_to_tuple(d: Dict) -> Tuple[int, List[int]]:
+def dict_to_tuple(d: Dict) -> Tuple[Tuple[Any, Any], ...]:
     return tuple((k, d[k]) for k in sorted(d.keys()))
 
 

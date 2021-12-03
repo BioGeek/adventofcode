@@ -1,13 +1,13 @@
 import nox
 
-locations = "2019", "2020", "2021", "noxfile.py"
+locations = "2018", "2019", "2020", "2021", "noxfile.py"
 
 
 @nox.session(python="3.10")
 def black(session):
     args = session.posargs or locations
     session.install("black")
-    session.run("black", "--target-version=py31", *args)
+    session.run("black", "--target-version=py310", *args)
 
 
 @nox.session(python="3.10")
@@ -31,5 +31,7 @@ def mypy(session):
         session.run("mypy", *session.posargs)
     else:
         for location in locations:
-            if location != "noxfile.py":
+            # mypy 0.910 doesn't yet support match statements
+            # see: https://github.com/python/mypy/pull/10191
+            if location not in ("noxfile.py", "2021"):
                 session.run("mypy", location)
