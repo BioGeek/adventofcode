@@ -1,3 +1,12 @@
+# Install the pre-commit hooks below with
+# 'pre-commit install'
+
+# Auto-update the version of the hooks with
+# 'pre-commit autoupdate'
+
+# Run the hooks on all files with
+# 'pre-commit run --all'
+
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
@@ -6,11 +15,12 @@ repos:
     -   id: check-toml
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
+
 -   repo: local
     hooks:
     -   id: black
         name: black
-        entry: poetry run black
+        entry: poetry run black --target-version py310
         language: system
         types: [python]
     -   id: flake8
