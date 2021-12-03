@@ -1,5 +1,5 @@
 # adventofcode
-My solutions of [Advent Of Code](https://adventofcode.com/) in Python
+My [Advent Of Code](https://adventofcode.com/) solutions in Python.
 
 | Year | days completed | stars collected   |
 |---|---|---|

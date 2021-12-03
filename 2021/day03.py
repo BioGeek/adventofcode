@@ -28,10 +28,8 @@ def gamma_rate(binary_numbers: List[str]) -> int:
 
 
 def life_support_rating(binary_numbers: List[str]) -> int:
-    numbers = binary_numbers.copy()
-    o = oxygen_generator_rating(numbers)
-    numbers = binary_numbers.copy()
-    c = CO2_scrubber_rating(numbers)
+    o = oxygen_generator_rating(binary_numbers)
+    c = CO2_scrubber_rating(binary_numbers)
     return o * c
 
 
@@ -46,8 +44,7 @@ def bit_criteria(
         value = bits_at_position.most_common()[common][0]
     remaining = [number for number in binary_numbers if number[position] == value]
     if len(remaining) == 1:
-        decimal = int(remaining[0], 2)
-        return decimal
+        return int(remaining[0], 2)
     position += 1
     return bit_criteria(
         binary_numbers=remaining, common=common, keep=keep, position=position
@@ -55,14 +52,20 @@ def bit_criteria(
 
 
 def oxygen_generator_rating(binary_numbers: List[str]) -> int:
+    """To find oxygen generator rating, determine the most common value (0 or 1) in the
+    current bit position, and keep only numbers with that bit in that position. If 0 and
+    1 are equally common, keep values with a 1 in the position being considered."""
     return bit_criteria(binary_numbers, common=0, keep="1")
 
 
 def CO2_scrubber_rating(binary_numbers: List[str]) -> int:
+    """To find CO2 scrubber rating, determine the least common value (0 or 1) in the
+    current bit position, and keep only numbers with that bit in that position. If 0 and
+    1 are equally common, keep values with a 0 in the position being considered."""
     return bit_criteria(binary_numbers, common=-1, keep="0")
 
 
-def binary_numbers(report: str):
+def binary_numbers(report: str) -> List[str]:
     return report.splitlines()
 
 

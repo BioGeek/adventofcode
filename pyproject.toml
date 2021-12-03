@@ -23,7 +23,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.isort]
 profile = "black"
-src_paths = ["2019", "2020", "2021", "noxfile.py"]
+src_paths = ["2017", "2018", "2019", "2020", "2021", "noxfile.py"]
 
 [tool.black]
 target_version = ['py310']
