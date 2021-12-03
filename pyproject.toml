@@ -48,11 +48,3 @@ exclude = '''
 
 [tool.mypy]
 python_version = '3.10'
-
-# Per module options
-
-[tool.mypy-2017]
-ignore_errors = true
-
-[tool.mypy-2018]
-ignore_errors = true

@@ -1,6 +1,6 @@
 import nox
 
-locations = "2018", "2019", "2020", "2021", "noxfile.py"
+locations = "2017", "2018", "2019", "2020", "2021", "noxfile.py"
 
 
 @nox.session(python="3.10")
