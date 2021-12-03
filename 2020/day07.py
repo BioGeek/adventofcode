@@ -1,7 +1,8 @@
 from __future__ import annotations
-from typing import Dict, List, Set, Tuple
-from collections import defaultdict
+
 import re
+from collections import defaultdict
+from typing import Dict, List, Set
 
 
 class Bag:
@@ -55,7 +56,7 @@ def make_bags(data: str) -> Dict[str, Bag]:
 
             if children != "no other bags":
                 for child in children.split(", "):
-                    m2 = re.match("(\d)+ (.*) bag[s]?", child)
+                    m2 = re.match("(\d)+ (.*) bag[s]?", child)  # noqa: W605
                     if m2:
                         count, child_color = m2.groups()
                         if child_color in all_bags:
@@ -107,8 +108,8 @@ dark green bags contain 2 dark blue bags.
 dark blue bags contain 2 dark violet bags.
 dark violet bags contain no other bags."""
 
-    SMALL = """shiny gold bags contain 2 dark red bags.  
-dark red bags contain 1 dark orange bag.  
+    SMALL = """shiny gold bags contain 2 dark red bags.
+dark red bags contain 1 dark orange bag.
 dark orange bags contain no other bags."""
 
     assert shiny_gold_bag(SMALL).child_colors() == 4
