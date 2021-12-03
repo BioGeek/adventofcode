@@ -1,8 +1,8 @@
 # https://adventofcode.com/2018/day/1
 
 import time
-from itertools import cycle, accumulate
 from collections import defaultdict
+from itertools import accumulate, cycle
 
 
 def main(part, lines=None):

@@ -7,7 +7,7 @@ def main(data=None, part=1):
         with open("data/03.txt") as f:
             data = f.read()
     fabric = defaultdict(list)
-    m = re.findall("#(\d+) @ (\d+),(\d+): (\d+)x(\d+).*", data)
+    m = re.findall(r"#(\d+) @ (\d+),(\d+): (\d+)x(\d+).*", data)
     if m:
         for line in m:
             id_, left_edge, top_edge, width, height = map(int, line)

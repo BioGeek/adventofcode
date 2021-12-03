@@ -15,7 +15,7 @@ def process(code: List[int]) -> List[int]:
         elif opcode == 99:
             break
         else:
-            assert False, f"Unrecognised opcode: {opcode}"
+            raise AssertionError(f"Unrecognised opcode: {opcode}")
 
     return code
 

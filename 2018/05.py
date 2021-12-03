@@ -1,6 +1,3 @@
-import re
-
-
 def main(part=1, data=None):
     if data is None:
         with open("data/05.txt") as f:

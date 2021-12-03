@@ -9,7 +9,7 @@ def sum_to_2020(expenses: Iterator[int], part: int = 1) -> int:
     for combination in combinations(expenses, part + 1):
         if sum(combination) == 2020:
             return prod(combination)
-    assert False  # To make mypy happy
+    raise AssertionError()  # To make mypy happy
 
 
 def expenses(report: str) -> Iterator[int]:

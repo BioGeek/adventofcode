@@ -15,7 +15,7 @@ def main(part=1, data=None):
         new = initial[:first_pot]
         for i in range(first_pot, len(initial) - 2):
             part = initial[i - 2 : i + 3]
-            current = part[2]
+            # current = part[2]
             # print(part, current)
             if part in rules:
                 new += rules[part]

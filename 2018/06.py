@@ -1,6 +1,6 @@
-from string import ascii_uppercase
-from itertools import chain, product
 from collections import defaultdict
+from itertools import chain, product
+from string import ascii_uppercase
 
 
 def X(point):
@@ -104,21 +104,15 @@ def draw_grid(grid):
 def main(part=1, data=None):
     if data is None:
         with open("data/06.txt") as f:
-            lines = f.read()
+            data = f.read()
     data = data.splitlines()
     coords = [tuple(map(int, line.split(", "))) for line in data]
-    Xs = [X(c) for c in coords]
-    Ys = [Y(c) for c in coords]
-    max_x = max(Xs)
-    max_y = max(Ys)
-
     grid = defaultdict(lambda: " ")
 
     for letter, coord in zip(letters(), coords):
         grid[coord] = letter
 
     print(grid)
-    to_discard = set()
     for coord in coords:
         letter = grid[coord]
         grid = floodfill(grid, coord, letter)

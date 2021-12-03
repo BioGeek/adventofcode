@@ -28,9 +28,7 @@ def is_valid_password(policy: Policy, password: str, part=1) -> bool:
 
 def parse(data: str) -> Iterator[Tuple[Policy, str]]:
     """Parses the input data"""
-    pattern = (
-        "(?P<lower>\d+)-(?P<upper>\d+) (?P<char>[a-z]): (?P<password>.*)"  # noqa: W605
-    )
+    pattern = r"(?P<lower>\d+)-(?P<upper>\d+) (?P<char>[a-z]): (?P<password>.*)"
     for match in re.finditer(pattern, data, re.MULTILINE):
         groupdict = match.groupdict()
         lower = int(groupdict["lower"])

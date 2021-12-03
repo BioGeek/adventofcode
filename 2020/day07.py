@@ -56,7 +56,7 @@ def make_bags(data: str) -> Dict[str, Bag]:
 
             if children != "no other bags":
                 for child in children.split(", "):
-                    m2 = re.match("(\d)+ (.*) bag[s]?", child)  # noqa: W605
+                    m2 = re.match(r"(\d)+ (.*) bag[s]?", child)
                     if m2:
                         count, child_color = m2.groups()
                         if child_color in all_bags:

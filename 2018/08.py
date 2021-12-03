@@ -1,6 +1,6 @@
 from collections import deque
-from string import ascii_uppercase
 from itertools import chain, product
+from string import ascii_uppercase
 
 
 def breadth_first_search(graph, root):
@@ -58,7 +58,7 @@ class Node:
         self.child_nodes = []
         self.metadata = []
 
-        for nr_child_node in range(self.nr_child_nodes):
+        for _nr_child_node in range(self.nr_child_nodes):
             child_nr_child_nodes = deque.popleft(self.numbers)
             child_nr_metadata_entries = deque.popleft(self.numbers)
             name = next(names)

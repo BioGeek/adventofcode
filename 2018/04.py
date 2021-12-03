@@ -1,9 +1,9 @@
 import re
-from itertools import groupby
 from collections import defaultdict
+from itertools import groupby
 
 
-def main(part=1, data=None):
+def main(part=1, data=None):  # noqa: C901
     if data is None:
         with open("data/04.txt") as f:
             data = f.read()
@@ -11,7 +11,7 @@ def main(part=1, data=None):
     dicts = []
     for line in data:
         m = re.match(
-            "\[1518-(?P<month>\d{2})-(?P<day>\d{2}) (?P<hour>\d{2}):(?P<mins>\d{2})\] (?P<line>.*)",
+            r"\[1518-(?P<month>\d{2})-(?P<day>\d{2}) (?P<hour>\d{2}):(?P<mins>\d{2})\] (?P<line>.*)",
             line,
         )
         if m:
@@ -21,7 +21,7 @@ def main(part=1, data=None):
     overlapping = {}
     for key, group in groupby(dicts, key=lambda d: "Guard" in d["line"]):
         if key:
-            g = re.match("Guard #(\d+) begins shift", list(group)[0]["line"])
+            g = re.match(r"Guard #(\d+) begins shift", list(group)[0]["line"])
             guard = g.group(1)
             # print(guard)
         else:
