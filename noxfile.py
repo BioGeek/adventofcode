@@ -7,7 +7,7 @@ locations = "2019", "2020", "2021", "noxfile.py"
 def black(session):
     args = session.posargs or locations
     session.install("black")
-    session.run("black", *args)
+    session.run("black", "--target-version=py31", *args)
 
 
 @nox.session(python="3.10")
