@@ -5,63 +5,47 @@ Board = List[List[str]]
 
 def score(drawing: str, board: Board) -> int:
     board_sum = sum(int(item) for row in board for item in row if item != "X")
-    print(f"score: {drawing}, {board_sum}")
     return board_sum * int(drawing)
 
 
-def win(board: Board) -> bool:
+def has_won(board: Board) -> bool:
     complete = ["X"] * 5
-    for row in board:
-        if row == complete:
-            return True
-    for column in zip(*board):
-        if list(column) == complete:
-            return True
-    return False
+    return any(row == complete for row in board) or any(
+        list(column) == complete for column in zip(*board)
+    )
 
 
-def play(drawings: List[str], boards: List[Board], part: int) -> int:
-    print(f"{drawings = }")
+def play(drawings: List[str], boards: List[Board], part: int = 1) -> int:
     nr_boards = len(boards)
-    print(f"{nr_boards = }")
-    for drawing_nr, drawing in enumerate(drawings):
-        print(f"{drawing = }")
+    winning_boards = set()
+    for drawing in drawings:
         for board_nr, board in enumerate(boards):
-            print(f"{board_nr = }")
             for row in board:
                 try:
                     idx = row.index(drawing)
                     row[idx] = "X"
                 except ValueError:
                     pass
-                print("".join([f"{item:>3}" for item in row]))
-            if win(board):
-                print("WIN")
-                print(f"{len(boards) = }")
+            if has_won(board):
                 if part == 1:
                     return score(drawing, board)
                 else:
-                    del boards[board_nr]
-
-                    if len(boards) == 1:
-
+                    winning_boards.add(board_nr)
+                    if len(winning_boards) == nr_boards:
                         return score(drawing, board)
-                    else:
-                        drawings = drawings[drawing_nr + 1 :]
-                        return play(drawings, boards, part)
 
 
 def parse(bingo: str) -> Tuple[List[str], List[Board]]:
     drawings, *boards = bingo.split("\n\n")
     drawings = drawings.split(",")
-    boards = [[line.split() for line in board.split("\n")] for board in boards]
+    boards = [[line.strip().split() for line in board.split("\n")] for board in boards]
     return drawings, boards
 
 
 def main(part: int = 1) -> int:
     with open("2021/data/day04.txt") as f:
         bingo = f.read()
-    return play(*parse(bingo))
+    return play(*parse(bingo), part)
 
 
 if __name__ == "__main__":
@@ -85,7 +69,8 @@ if __name__ == "__main__":
 22 11 13  6  5
  2  0 12  3  7"""
 
-    # assert play(*parse(bingo)) == 4512
-    print(play(*parse(bingo), part=2))
+    assert play(*parse(bingo)) == 4512
+    assert play(*parse(bingo), part=2)
 
-    # print(main())
+    print(main())
+    print(main(part=2))
