@@ -3,9 +3,9 @@ from typing import List, Tuple
 Board = List[List[str]]
 
 
-def score(drawing: str, board: Board) -> int:
+def score(number: str, board: Board) -> int:
     board_sum = sum(int(item) for row in board for item in row if item != "X")
-    return board_sum * int(drawing)
+    return board_sum * int(number)
 
 
 def has_won(board: Board) -> bool:
@@ -15,31 +15,31 @@ def has_won(board: Board) -> bool:
     )
 
 
-def play(drawings: List[str], boards: List[Board], part: int = 1) -> int:
+def play(numbers: List[str], boards: List[Board], part: int = 1) -> int:
     nr_boards = len(boards)
     winning_boards = set()
-    for drawing in drawings:
+    for number in numbers:
         for board_nr, board in enumerate(boards):
             for row in board:
                 try:
-                    idx = row.index(drawing)
+                    idx = row.index(number)
                     row[idx] = "X"
                 except ValueError:
                     pass
             if has_won(board):
                 if part == 1:
-                    return score(drawing, board)
+                    return score(number, board)
                 else:
                     winning_boards.add(board_nr)
                     if len(winning_boards) == nr_boards:
-                        return score(drawing, board)
+                        return score(number, board)
 
 
 def parse(bingo: str) -> Tuple[List[str], List[Board]]:
-    drawings, *boards = bingo.split("\n\n")
-    drawings = drawings.split(",")
+    numbers, *boards = bingo.split("\n\n")
+    numbers = numbers.split(",")
     boards = [[line.strip().split() for line in board.split("\n")] for board in boards]
-    return drawings, boards
+    return numbers, boards
 
 
 def main(part: int = 1) -> int:
