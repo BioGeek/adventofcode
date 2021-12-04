@@ -102,3 +102,6 @@ venv.bak/
 
 #VS code
 .vscode/
+
+# pyenv
+.python-version
