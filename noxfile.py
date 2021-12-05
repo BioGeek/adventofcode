@@ -35,9 +35,11 @@ def mypy(session):
         for location in locations:
             # mypy 0.910 doesn't yet support match statements
             # see: https://github.com/python/mypy/pull/10191
-            if location not in ("2021", "noxfile.py"):
+            if location not in ("2021", "2020", "noxfile.py"):
                 session.run("mypy", location)
             else:
-                for day in Path("2021").iterdir():
-                    if day.name not in ("day02.py", "data"):
-                        session.run("mypy", str(day))
+                exclude = {"2020": "day12.py", "2021": "day02.py"}
+                for year, filename in exclude.items():
+                    for day in Path(year).iterdir():
+                        if day.name not in (filename, "data"):
+                            session.run("mypy", str(day))
