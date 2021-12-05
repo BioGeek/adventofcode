@@ -33,12 +33,13 @@ def play(numbers: List[str], boards: List[Board], part: int = 1) -> int:
                     winning_boards.add(board_nr)
                     if len(winning_boards) == nr_boards:
                         return score(number, board)
+    raise AssertionError()
 
 
 def parse(bingo: str) -> Tuple[List[str], List[Board]]:
-    numbers, *boards = bingo.split("\n\n")
-    numbers = numbers.split(",")
-    boards = [[line.strip().split() for line in board.split("\n")] for board in boards]
+    first_line, *rest = bingo.split("\n\n")
+    numbers = first_line.split(",")
+    boards = [[line.strip().split() for line in board.split("\n")] for board in rest]
     return numbers, boards
 
 
