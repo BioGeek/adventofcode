@@ -1,4 +1,4 @@
-with open("./data/25_demo.txt") as f:
+with open("2017/data/day25_demo.txt") as f:
     blueprint = f.read().splitlines()
 
 

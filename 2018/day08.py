@@ -79,7 +79,7 @@ class Node:
 
 def main(part=1, data=None):
     if data is None:
-        with open("data/08.txt") as f:
+        with open("2018/data/08.txt") as f:
             data = f.read().strip()
     numbers = deque(map(int, data.split()))
 

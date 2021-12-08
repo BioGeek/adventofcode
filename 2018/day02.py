@@ -1,6 +1,6 @@
 def main(part=1, data=None):
     if data is None:
-        with open("data/02.txt") as f:
+        with open("2018/data/02.txt") as f:
             data = f.read().splitlines()
     elif isinstance(data, str):
         data = [data]
@@ -54,6 +54,4 @@ if __name__ == "__main__":
         )
         == "fgij"
     )
-    result = main(part=2)
-    with open("data/02_result.txt", "w") as f:
-        f.write(result)
+    print(main(part=2))

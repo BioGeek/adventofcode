@@ -4,7 +4,7 @@ import json
 import pytest
 
 
-@pytest.fixture(scope="session", params=list(range(2019, 2022)))
+@pytest.fixture(scope="session", params=list(range(2017, 2022)))
 def year(request):
     return request.param
 
@@ -22,8 +22,11 @@ def part(request):
 @pytest.fixture(scope="session")
 def solution(year, day, part):
     known_incomplete_solutions = {
+        2017: {10: [1, 2], 25: [1, 2]},
+        2018: {1: [2], 5: [1, 2], 6: [1, 2], 12: [1, 2]},
         2019: {6: [1, 2], 7: [2]},
         2020: {10: [1, 2], 11: [1, 2], 12: [1, 2]},
+        2021: {6: [2]},
     }
     if part in known_incomplete_solutions.get(year, {}).get(day, []):
         pytest.skip(
@@ -40,7 +43,6 @@ def solution(year, day, part):
 def expected(year, day, part):
     with open("expected.json") as f:
         results = json.load(f)
-        print(results)
     try:
         return results[str(year)][str(day)][str(part)]
     except KeyError:

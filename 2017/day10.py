@@ -46,17 +46,21 @@ def knot(numbers, current_position, skip_size, lengths):
     return numbers[0] * numbers[1]
 
 
+def main(part: int = 1) -> int:
+    with open("2017/data/day10.txt") as f:
+        lengths = map(int, f.read().split(","))
+    numbers = range(256)
+    current_position = 0
+    skip_size = 0
+    return knot(numbers, current_position, skip_size, lengths)
+
+
 if __name__ == "__main__":
-    numbers = range(5)  # range(256)
+    numbers = range(5)
     current_position = 0
     skip_size = 0
     lengths = [3, 4, 1, 5]
 
     assert knot(numbers, current_position, skip_size, lengths) == 12
 
-    numbers = range(256)
-    current_position = 0
-    skip_size = 0
-    lengths = [34, 88, 2, 222, 254, 93, 150, 0, 199, 255, 39, 32, 137, 136, 1, 167]
-
-    print(knot(numbers, current_position, skip_size, lengths))
+    print(main())
