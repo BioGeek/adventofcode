@@ -1,5 +1,4 @@
 from math import floor
-from typing import Callable
 
 
 def calculate_fuel(mass: int) -> int:
@@ -25,13 +24,17 @@ def calculate_fuel_better(mass: int) -> int:
     return total_fuel
 
 
-def main(func: Callable) -> int:
+def main(part: int = 1) -> int:
     """
     What is the sum of the fuel requirements for all of
     the modules on your spacecraft?
     """
-    with open("data/day01.txt") as fh:
+    with open("2019/data/day01.txt") as fh:
         masses = map(int, fh.read().splitlines())
+    if part == 1:
+        func = calculate_fuel
+    else:
+        func = calculate_fuel_better
 
     return sum(func(mass) for mass in masses)
 
@@ -42,10 +45,10 @@ if __name__ == "__main__":
     assert calculate_fuel(1969) == 654
     assert calculate_fuel(100756) == 33583
 
-    print(main(calculate_fuel))
+    print(main())
 
     assert calculate_fuel_better(14) == 2
     assert calculate_fuel_better(1969) == 966
     assert calculate_fuel_better(100756) == 50346
 
-    print(main(calculate_fuel_better))
+    print(main(part=2))

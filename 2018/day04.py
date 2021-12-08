@@ -5,7 +5,7 @@ from itertools import groupby
 
 def main(part=1, data=None):  # noqa: C901
     if data is None:
-        with open("data/04.txt") as f:
+        with open("2018/data/04.txt") as f:
             data = f.read()
     data = data.splitlines()
     dicts = []

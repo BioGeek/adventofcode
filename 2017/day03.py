@@ -68,39 +68,42 @@ def neighbors8(point):
     )
 
 
-def main(n):
+def solve(n: int, part: int = 1) -> int:
     current_position = (0, 0)
-    s = spiral_movements()
-    for _ in range(2, n + 1):
-        change = next(s)
-        current_position = add(current_position, change)
-    return cityblock_distance(current_position)
-
-
-def main2(n):
-    current_position = (0, 0)
-    current_value = 1
-    values = defaultdict(int)
-    values[current_position] = current_value
-    s = spiral_movements()
-    while current_value < n:
-        change = next(s)
-        current_position = add(current_position, change)
-        neighbors = neighbors8(current_position)
-        current_value = sum([values[n] for n in neighbors])
+    if part == 1:
+        s = spiral_movements()
+        for _ in range(2, n + 1):
+            change = next(s)
+            current_position = add(current_position, change)
+        return cityblock_distance(current_position)
+    else:
+        current_value = 1
+        values = defaultdict(int)
         values[current_position] = current_value
-        # print(current_value, current_position, {(k, v) for (k, v) in values.items() if v})
-    return current_value
+        s = spiral_movements()
+        while current_value < n:
+            change = next(s)
+            current_position = add(current_position, change)
+            neighbors = neighbors8(current_position)
+            current_value = sum([values[n] for n in neighbors])
+            values[current_position] = current_value
+            # print(current_value, current_position, {(k, v) for (k, v) in values.items() if v})
+        return current_value
+
+
+def main(part: int = 1) -> int:
+    n = 361527
+    return solve(n, part)
 
 
 if __name__ == "__main__":
-    assert main(12) == 3
-    assert main(23) == 2
-    assert main(1024) == 31
+    assert solve(12) == 3
+    assert solve(23) == 2
+    assert solve(1024) == 31
 
-    print(main(361527))
+    print(main())
 
-    assert main2(12) == 23
-    assert main2(800) == 806
+    assert solve(12, part=2) == 23
+    assert solve(800, part=2) == 806
 
-    print(main2(361527))
+    print(main(part=2))

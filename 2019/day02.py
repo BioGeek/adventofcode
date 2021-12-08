@@ -35,27 +35,24 @@ def execute(memory: str, noun: int = 12, verb: int = 2) -> int:
 
 def get_memory() -> str:
     """Read in the data."""
-    with open("data/day02.txt") as f:
+    with open("2019/data/day02.txt") as f:
         memory = f.read()
     return memory
 
 
-def main() -> int:
+def main(part: int = 1, desired: int = 19690720) -> int:
     """What value is left at position 0 after the program halts?"""
     memory = get_memory()
-    return execute(memory)
-
-
-def main2(desired: int = 19690720) -> int:
-    """What pair of inputs produces the desired output?"""
-    memory = get_memory()
-    code = initialize_memory(memory)
-    for noun in range(len(code)):
-        for verb in range(len(code)):
-            if execute(memory, noun, verb) == desired:
-                result = (100 * noun) + verb
-                break
-    return result
+    if part == 1:
+        return execute(memory)
+    else:
+        code = initialize_memory(memory)
+        for noun in range(len(code)):
+            for verb in range(len(code)):
+                if execute(memory, noun, verb) == desired:
+                    result = (100 * noun) + verb
+                    break
+        return result
 
 
 if __name__ == "__main__":
@@ -79,4 +76,4 @@ if __name__ == "__main__":
     ]
 
     print(main())
-    print(main2())
+    print(main(part=2))

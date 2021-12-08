@@ -1,6 +1,6 @@
 def main(part=1, data=None):
     if data is None:
-        with open("data/05.txt") as f:
+        with open("2018/data/05.txt") as f:
             data = f.read()
     return len(reaction(data))
 

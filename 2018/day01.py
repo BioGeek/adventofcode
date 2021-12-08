@@ -8,7 +8,7 @@ from itertools import accumulate, cycle
 def main(part, lines=None):
     start = time.time()
     if lines is None:
-        with open("data/01.txt") as f:
+        with open("2018/data/01.txt") as f:
             lines = f.read().splitlines()
     numbers = (int(line) for line in lines)
     if part == 1:
@@ -33,7 +33,7 @@ def main(part, lines=None):
 def main2(part):
     # https://www.reddit.com/r/adventofcode/comments/a20646/2018_day_1_solutions/eauapmb/
     start = time.time()
-    changes = [int(n) for n in open("data/01.txt").read().splitlines()]
+    changes = [int(n) for n in open("2018/data/01.txt").read().splitlines()]
     if part == 1:
         return sum(changes)
     else:
@@ -45,7 +45,7 @@ def main2(part):
 
 def main3(part, data=None):
     if data is None:
-        data = open("data/01.txt").read().splitlines()
+        data = open("2018/data/01.txt").read().splitlines()
     changes = [int(n) for n in data]
     if part == 1:
         return sum(changes)
@@ -81,6 +81,6 @@ def main3(part, data=None):
 
 
 if __name__ == "__main__":
-    # print(main2(1))
-    # print(main(False, ['+1', '-2', '+3', '+1']))
+    print(main2(1))
+    print(main(False, ["+1", "-2", "+3", "+1"]))
     print(main3(2, [1, 1, 10, -9]))

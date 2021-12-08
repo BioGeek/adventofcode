@@ -100,12 +100,19 @@ class Computer:
 
 
 def get_data() -> str:
-    with open("data/day05.txt") as f:
+    with open("2019/data/day05.txt") as f:
         data = f.read()
     return data
 
 
-def main(data: str, input_: Tuple = ()) -> int:
+def main(data: str = "", input_: Tuple = (), part: int = 1) -> int:
+    if not data:
+        data = get_data()
+    if not input_:
+        if part == 1:
+            input_ = (1,)
+        else:
+            input_ = (5,)
     tape = list(map(int, data.split(",")))
     computer = Computer(tape, input_=input_)
     computer.run()
@@ -115,7 +122,7 @@ def main(data: str, input_: Tuple = ()) -> int:
 if __name__ == "__main__":
     assert main("3,0,4,0,99", (19,)) == 19
     assert main("1002,4,3,4,33") == 99
-    print(main(get_data(), (1,)))
+    print(main())
 
     assert main("3,9,8,9,10,9,4,9,99,-1,8", (8,)) == 1
     assert main("3,9,8,9,10,9,4,9,99,-1,8", (7,)) == 0
@@ -131,4 +138,4 @@ if __name__ == "__main__":
     assert main("3,3,1107,-1,8,3,4,3,99", (7,)) == 1
     assert main("3,3,1107,-1,8,3,4,3,99", (8,)) == 0
 
-    print(main(get_data(), (5,)))
+    print(main(part=2))

@@ -11,20 +11,20 @@ def spawn(ages: str, days: int) -> int:
     start_times = map(int, ages.split(","))
     internal_timers = [lanternfish_timer(start_time) for start_time in start_times]
 
-    for i in range(days + 1):
-        print(f"{i = }")
+    for _ in range(days + 1):
         day = [next(internal_timer) for internal_timer in internal_timers]
-        # print(day)
-        print(f"{day.count(0) = }")
-        print(f"{len(day) = }")
         for _offspring in range(day.count(0)):
             internal_timers.append(lanternfish_timer(8))
     return len(day)
 
 
-def main(days: int = 80, part: int = 1) -> int:
+def main(part: int = 1) -> int:
     with open("2021/data/day06.txt") as f:
         ages = f.read()
+    if part == 1:
+        days = 80
+    else:
+        days = 256
     return spawn(ages, days)
 
 
@@ -64,3 +64,5 @@ if __name__ == "__main__":
     print(main())
 
     assert spawn(ages, 256) == 26984457539
+
+    print(main(part=2))

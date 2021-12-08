@@ -41,5 +41,12 @@ def mypy(session):
                 exclude = {"2020": "day12.py", "2021": "day02.py"}
                 for year, filename in exclude.items():
                     for day in Path(year).iterdir():
-                        if day.name not in (filename, "data"):
+                        if day.name not in (filename, "data", "__pycache__"):
                             session.run("mypy", str(day))
+
+
+@nox.session(python="3.10")
+def tests(session):
+    args = session.posargs
+    session.install("pytest-timeout")
+    session.run("pytest", "-v", *args)

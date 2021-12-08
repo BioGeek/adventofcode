@@ -18,6 +18,7 @@ def make_graph(adaptors: List[int]) -> Dict[int, List[int]]:
         graph[adaptor] = [
             a for a in all_adaptors if a in range(adaptor + 1, adaptor + 4)
         ]
+    print(graph)
     return graph
 
 
@@ -27,6 +28,9 @@ def longest_path(graph, start, path=None):
     if path is None:
         path = []
     path = path + [start]
+    if isinstance(start, list):
+        start = start[0]
+    print(f"{start = }")
     for node in graph[start]:
         if node not in path:
             deepest_node, max_depth, max_path = longest_path(graph, node, path)
@@ -107,10 +111,10 @@ if __name__ == "__main__":
 10
 3"""
 
-    # assert device_joltage(make_adaptors(ADAPTERS)) == 22
-    # assert use_all_adapters(make_adaptors(ADAPTERS)) == 35
+    assert device_joltage(make_adaptors(ADAPTERS)) == 22
+    assert use_all_adapters(make_adaptors(ADAPTERS)) == 35
 
-    # assert device_joltage(make_adaptors(LARGER)) == 52
-    # assert use_all_adapters(make_adaptors(LARGER)) == 220
+    assert device_joltage(make_adaptors(LARGER)) == 52
+    assert use_all_adapters(make_adaptors(LARGER)) == 220
 
     print(main())

@@ -4,7 +4,7 @@ from collections import defaultdict
 
 def main(data=None, part=1):
     if data is None:
-        with open("data/03.txt") as f:
+        with open("2018/data/03.txt") as f:
             data = f.read()
     fabric = defaultdict(list)
     m = re.findall(r"#(\d+) @ (\d+),(\d+): (\d+)x(\d+).*", data)

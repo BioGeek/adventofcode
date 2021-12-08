@@ -103,7 +103,7 @@ def draw_grid(grid):
 
 def main(part=1, data=None):
     if data is None:
-        with open("data/06.txt") as f:
+        with open("2018/data/06.txt") as f:
             data = f.read()
     data = data.splitlines()
     coords = [tuple(map(int, line.split(", "))) for line in data]
