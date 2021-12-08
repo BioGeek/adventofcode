@@ -21,14 +21,9 @@ def part(request):
 
 @pytest.fixture(scope="session")
 def solution(year, day, part):
-    known_incomplete_solutions = {
-        2017: {10: [1, 2], 25: [1, 2]},
-        2018: {1: [2], 5: [1, 2], 6: [1, 2], 12: [1, 2]},
-        2019: {6: [1, 2], 7: [2]},
-        2020: {10: [1, 2], 11: [1, 2], 12: [1, 2]},
-        2021: {6: [2]},
-    }
-    if part in known_incomplete_solutions.get(year, {}).get(day, []):
+    with open("tests/known_incomplete_solutions.json") as f:
+        known_incomplete_solutions = json.load(f)
+    if part in known_incomplete_solutions.get(str(year), {}).get(str(day), []):
         pytest.skip(
             f"Known incomplete solution for year: {year}, day: {day}, part: {part}"
         )
@@ -41,7 +36,7 @@ def solution(year, day, part):
 
 @pytest.fixture(scope="session")
 def expected(year, day, part):
-    with open("expected.json") as f:
+    with open("tests/expected.json") as f:
         results = json.load(f)
     try:
         return results[str(year)][str(day)][str(part)]
@@ -53,7 +48,4 @@ def expected(year, day, part):
 
 @pytest.mark.timeout(60)
 def test_solution(solution, expected):
-    if expected is None:
-        pytest.skip("No output")
-
     assert solution == expected
