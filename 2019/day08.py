@@ -9,7 +9,7 @@ def main(
     width: int = WIDTH,
     height: int = HEIGHT,
     part: int = 1,
-) -> int:
+) -> int | str:
     if not data:
         with open("2019/data/day08.txt") as f:
             data = f.read().strip()
