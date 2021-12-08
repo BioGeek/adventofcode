@@ -25,7 +25,7 @@ class Tree:
 
 
 def get_data() -> List[str]:
-    with open("data/day06.txt") as f:
+    with open("2019/data/day06.txt") as f:
         lines = f.read().splitlines()
     return lines
 

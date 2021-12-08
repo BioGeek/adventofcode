@@ -1,10 +1,10 @@
 from itertools import pairwise, tee
-from typing import Iterable, Tuple, TypeVar
+from typing import Iterable, TypeVar
 
 _T_co = TypeVar("_T_co", covariant=True)
 
 
-def tripletwise(iterable: Iterable[_T_co]) -> zip[Tuple[_T_co, _T_co, _T_co]]:
+def tripletwise(iterable: Iterable[_T_co]):
     """tripletwise('ABCDEFG') --> ABC BCD CDE DEF EFG"""
     a, b, c = tee(iterable, 3)
     next(b, None)

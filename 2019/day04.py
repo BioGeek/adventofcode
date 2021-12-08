@@ -23,7 +23,9 @@ def not_part_of_larger_group(n: str) -> bool:
     return 2 in c.values()
 
 
-def main(low: int, high: int, part: int = 1) -> int:
+def main(part: int = 1) -> int:
+    with open("2019/data/day04.txt") as f:
+        low, high = map(int, f.read().split("-"))
     return sum(is_password(n, part) for n in range(low, high))
 
 
@@ -35,12 +37,10 @@ if __name__ == "__main__":
     assert not is_password(223450)
     assert not is_password(123789)
 
-    low = 265275
-    high = 781584
-    print(main(low, high))
+    print(main())
 
     assert not_part_of_larger_group("112233")
     assert not not_part_of_larger_group("123444")
     assert not_part_of_larger_group("111122")
 
-    print(main(low, high, part=2))
+    print(main(part=2))

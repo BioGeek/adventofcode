@@ -99,7 +99,7 @@ class Computer:
 
 
 def get_data() -> str:
-    with open("./data/day07.txt") as f:
+    with open("2019/data/day07.txt") as f:
         data = f.read()
     return data
 
@@ -111,7 +111,9 @@ def calculate(data: str, input_: Tuple = ()) -> int:
     return computer.result if computer.result is not None else computer.memory[-1]
 
 
-def main(data: str, part: int = 1) -> int:
+def main(data: str = "", part: int = 1) -> int:
+    if not data:
+        data = get_data()
     max_thruster = 0
     if part == 1:
         for (a, b, c, d, e) in itertools.permutations(range(5)):
@@ -154,7 +156,7 @@ if __name__ == "__main__":
         == 65210
     )
 
-    print(main(get_data()))
+    print(main())
 
     assert (
         main(
@@ -163,3 +165,5 @@ if __name__ == "__main__":
         )
         == 139629729
     )
+
+    print(main(part=2))

@@ -33,7 +33,7 @@ def create_coords(wire: str) -> Coordinates:
 
 def get_data() -> List[str]:
     """Read in the data."""
-    with open("data/day03.txt") as f:
+    with open("2019/data/day03.txt") as f:
         wires = f.read().splitlines()
     return wires
 
