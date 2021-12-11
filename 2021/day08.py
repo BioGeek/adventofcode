@@ -36,6 +36,8 @@ def parse(entries: str) -> List[List[List[str]]]:
 
 
 def solve(entries: str, part: int = 1) -> int:
+    # Part 2 uses the method described here:
+    # https://www.reddit.com/r/adventofcode/comments/rc5s3z/2021_day_8_part_2_a_simple_fast_and_deterministic
     if part == 1:
         return sum(
             1
@@ -44,8 +46,6 @@ def solve(entries: str, part: int = 1) -> int:
             if len(segments_length_to_digits[len(val)]) == 1
         )
     else:
-        # uses the method described here:
-        # https://www.reddit.com/r/adventofcode/comments/rc5s3z/2021_day_8_part_2_a_simple_fast_and_deterministic
         result = []
         for signal_patterns, output_values in parse(entries):
             line = []
