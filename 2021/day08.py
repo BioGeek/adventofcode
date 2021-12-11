@@ -1,7 +1,7 @@
-from collections import defaultdict
-from typing import List
+from collections import Counter, defaultdict
+from typing import Dict, List
 
-digit_to_segments = {
+digit_to_segments: Dict[int, str] = {
     0: "abcefg",
     1: "cf",
     2: "acdeg",
@@ -14,11 +14,19 @@ digit_to_segments = {
     9: "abcdfg",
 }
 
-segments_length_to_digits = defaultdict(list)
+segments_length_to_digits: Dict[int, List[int]] = defaultdict(list)
 for digit, segments in digit_to_segments.items():
     segments_length_to_digits[len(segments)].append(digit)
 
-print(segments_length_to_digits)
+segment_used_in_digits: Dict[str, List[int]] = defaultdict(list)
+for digit, segments in digit_to_segments.items():
+    for segment in segments:
+        segment_used_in_digits[segment].append(digit)
+
+score_to_digit: Dict[int, int] = {
+    sum(len(segment_used_in_digits[segment]) for segment in segments): digit
+    for digit, segments in digit_to_segments.items()
+}
 
 
 def parse(entries: str) -> List[List[List[str]]]:
@@ -35,12 +43,24 @@ def solve(entries: str, part: int = 1) -> int:
             for val in output_values
             if len(segments_length_to_digits[len(val)]) == 1
         )
+    else:
+        # uses the method described here:
+        # https://www.reddit.com/r/adventofcode/comments/rc5s3z/2021_day_8_part_2_a_simple_fast_and_deterministic
+        result = []
+        for signal_patterns, output_values in parse(entries):
+            line = []
+            scores = Counter("".join(signal_patterns))
+            for segments in output_values:
+                output_score = sum(scores[segment] for segment in segments)
+                line.append(score_to_digit[output_score])
+            result.append(int("".join(map(str, line))))
+        return sum(result)
 
 
 def main(part: int = 1) -> int:
     with open("2021/data/day08.txt") as f:
         entries = f.read()
-    return solve(entries)
+    return solve(entries, part)
 
 
 if __name__ == "__main__":
@@ -80,4 +100,7 @@ gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fgae cfgab fg bagce
 
     print(main())
 
-    print(solve(single_line, part=2))
+    assert solve(single_line, part=2) == 5353
+    assert solve(entries, part=2) == 61229
+
+    print(main(part=2))
