@@ -2,17 +2,17 @@ from functools import reduce
 from operator import mul
 from typing import Dict, Tuple
 
-Location = Tuple[int]
+Location = Tuple[int, int]
 Grid = Dict[Location, int]
 
 
-def neighbors(location: Location) -> Tuple[Location]:
+def neighbors(location: Location) -> Tuple[Location, Location, Location, Location]:
     """The locations of the four neighbors (without diagonals)."""
     x, y = location
     return ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1))
 
 
-def low_point_locations(grid: Grid):
+def low_point_locations(grid: Grid) -> Grid:
     return {
         location: digit
         for (location, digit) in grid.items()
@@ -21,8 +21,8 @@ def low_point_locations(grid: Grid):
 
 
 def floodfill(
-    grid: Grid, location: Location, fill_value: str = ".", show_grid: bool = False
-) -> None:
+    grid: Grid, location: Location, fill_value: int = 9, show_grid: bool = False
+) -> int:
     orig_value = grid[location]
     stack = set((location,))
     if orig_value == fill_value:
@@ -31,7 +31,7 @@ def floodfill(
     basin_size = 0
     while stack:
         location = stack.pop()
-        if grid[location] not in (9, fill_value) and grid[location] >= orig_value:
+        if grid[location] != fill_value and grid[location] >= orig_value:
             grid[location] = fill_value
             basin_size += 1
             for adjacent in neighbors(location):
@@ -43,8 +43,8 @@ def floodfill(
     return basin_size
 
 
-def visualize(grid: Grid):
-    x_size, y_size = map(max, zip(*grid.keys()))
+def visualize(grid: Grid) -> str:
+    x_size, y_size = [max(keys) for keys in zip(*grid.keys())]
     return "\n".join(
         "".join(str(grid[(x, y)]) for y in range(y_size + 1)) for x in range(x_size + 1)
     )
@@ -87,4 +87,4 @@ if __name__ == "__main__":
 
     assert solve(heightmap, part=2) == 1134
 
-    # print(main(part=2))
+    print(main(part=2))
