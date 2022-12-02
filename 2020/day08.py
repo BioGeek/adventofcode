@@ -10,7 +10,7 @@ def make_instructions(data: str) -> List[Tuple[str, int]]:
 
 
 def detect_infinite_loop(instructions: List[Tuple[str, int]]) -> Tuple[int, bool]:
-    visited = [False] * len(instructions)
+    visited = [False] * len(instructions)  # noqa B020
     accumulator = 0
     index = 0
 

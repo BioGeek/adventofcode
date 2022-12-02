@@ -20,12 +20,12 @@ repos:
     hooks:
     -   id: isort
         name: isort
-        entry: poetry run isort 2017 2018 2019 2020 2021 noxfile.py
+        entry: poetry run isort 2017 2018 2019 2020 2021 2022 noxfile.py
         language: system
         types: [python]
     -   id: black
         name: black
-        entry: poetry run black --target-version=py310 2017 2018 2019 2020 2021 noxfile.py
+        entry: poetry run black --target-version=py310 2017 2018 2019 2020 2021 2022 noxfile.py
         language: system
         types: [python]
     -   id: flake8
