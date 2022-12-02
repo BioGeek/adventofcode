@@ -4,9 +4,18 @@
 # COMMANDS                                                                      #
 #################################################################################
 
+## Install poetry
+install-poetry:
+	curl -sSL https://install.python-poetry.org | python3 -
+
 ## Install Python Dependencies
 install:
-	poetry install
+	poetry install --with testing,dev
+	poetry run pre-commit install
+
+## Update all Python packages
+update:
+	poetry update
 
 ## Delete all compiled Python files
 clean:
