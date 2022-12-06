@@ -1,0 +1,10 @@
+nox
+pre-commit
+black
+click
+mypy
+flake8
+flake8-isort
+flake8-bugbear
+isort
+pytest-timeout

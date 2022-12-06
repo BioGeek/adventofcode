@@ -1,4 +1,4 @@
-import typing
+# type: ignore
 from dataclasses import dataclass
 from typing import Iterable
 
@@ -10,7 +10,6 @@ class Location:
     aim: int = 0
 
 
-@typing.no_type_check
 def parse(line: str, location: Location, part: int) -> Location:
     match line.split():
         case ["forward", distance]:

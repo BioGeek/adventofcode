@@ -9,7 +9,7 @@
 
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+    rev: v4.4.0
     hooks:
     -   id: check-yaml
     -   id: check-toml
@@ -20,21 +20,21 @@ repos:
     hooks:
     -   id: isort
         name: isort
-        entry: poetry run isort 2017 2018 2019 2020 2021 2022 noxfile.py
+        entry: isort 2017 2018 2019 2020 2021 2022
         language: system
         types: [python]
     -   id: black
         name: black
-        entry: poetry run black --target-version=py310 2017 2018 2019 2020 2021 2022 noxfile.py
+        entry: black --target-version=py310 2017 2018 2019 2020 2021 2022 noxfile.py
         language: system
         types: [python]
     -   id: flake8
         name: flake8
-        entry: poetry run flake8
+        entry: flake8
         language: system
         types: [python]
     -   id: mypy
         name: mypy
-        entry: poetry run mypy
+        entry: mypy --show-traceback
         language: system
         types: [python]

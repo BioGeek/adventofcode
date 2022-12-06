@@ -10,7 +10,7 @@ def make_instructions(data: str) -> List[Tuple[str, int]]:
 
 
 def detect_infinite_loop(instructions: List[Tuple[str, int]]) -> Tuple[int, bool]:
-    visited = [False] * len(instructions)  # noqa B020
+    visited = [False] * len(instructions)
     accumulator = 0
     index = 0
 
@@ -54,7 +54,7 @@ def main(part: int = 1) -> int:
         accumulator, terminated_normally = detect_infinite_loop(instructions)
         return accumulator
     else:
-        for instructions in fix_corruption(instructions):
+        for instructions in fix_corruption(instructions):  # noqa: B020
             accumulator, terminated_normally = detect_infinite_loop(instructions)
             if terminated_normally:
                 return accumulator

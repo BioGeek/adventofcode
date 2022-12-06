@@ -17,6 +17,10 @@ install:
 update:
 	poetry update
 
+## Run pre-commit on all files
+lint:
+	poetry run pre-commit run --all-files
+
 ## Delete all compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete
