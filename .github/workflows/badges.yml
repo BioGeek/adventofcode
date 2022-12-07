@@ -18,6 +18,16 @@ jobs:
         with:
           userid: 23810                          # your user id, see setup on how to obtain
           session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
+          year: 2022                                                                                     # The year for which stats should be retrieved
+          file: 'README.md'                                                                              # The file that contains the badges
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow&year=2022)'             # Regular expression that finds the content of the stars badge iun your file.
+          daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red&year=2022)'  # Regular expression that finds the content of the days completed badge iun your file.
+
+
+      - uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: 23810                          # your user id, see setup on how to obtain
+          session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
           year: 2021                                                                                     # The year for which stats should be retrieved
           file: 'README.md'                                                                              # The file that contains the badges
           starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow&year=2021)'             # Regular expression that finds the content of the stars badge iun your file.
@@ -76,7 +86,6 @@ jobs:
           file: 'README.md'                                                                              # The file that contains the badges
           starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow&year=2015)'             # Regular expression that finds the content of the stars badge iun your file.
           daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red&year=2015)'  # Regular expression that finds the content of the days completed badge iun your file.
-
 
       - uses: stefanzweifel/git-auto-commit-action@v4     # Step that pushes these local changes back to your github repo
         with:

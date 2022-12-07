@@ -3,6 +3,7 @@ My [Advent Of Code](https://adventofcode.com/) solutions in Python.
 
 | Year | days completed | stars collected   |
 |---|---|---|
+| 2021 | ![](https://img.shields.io/badge/days%20completed-0-red&year=2022) | ![](https://img.shields.io/badge/stars%20⭐-0-yellow&year=2022) |
 | 2021 | ![](https://img.shields.io/badge/days%20completed-8-red&year=2021) | ![](https://img.shields.io/badge/stars%20⭐-17-yellow&year=2021) |
 | 2020 | ![](https://img.shields.io/badge/days%20completed-8-red&year=2020) | ![](https://img.shields.io/badge/stars%20⭐-18-yellow&year=2020) |
 | 2019 | ![](https://img.shields.io/badge/days%20completed-6-red&year=2019) | ![](https://img.shields.io/badge/stars%20⭐-14-yellow&year=2019) |
