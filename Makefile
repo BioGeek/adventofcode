@@ -4,31 +4,19 @@
 # COMMANDS                                                                      #
 #################################################################################
 
-## Install poetry
-install-poetry:
-	curl -sSL https://install.python-poetry.org | python3 -
-
 ## Install Python Dependencies
 install:
-	poetry install --with testing,dev
-	poetry run pre-commit install
-
-## Update all Python packages
-update:
-	poetry update
+	pip install -r requirements.txt
+	pre-commit install
 
 ## Run pre-commit on all files
 lint:
-	poetry run pre-commit run --all-files
+	pre-commit run --all-files
 
 ## Delete all compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
-
-## Clear poetry cache
-clear_cache:
-	poetry cache clear --all .
 
 #################################################################################
 # PROJECT RULES                                                                 #
@@ -36,7 +24,7 @@ clear_cache:
 
 ## Run tests
 tests:
-	poetry run pytest -v --exitfirst
+	pytest -v --exitfirst
 
 
 #################################################################################
