@@ -8,3 +8,4 @@ flake8-isort
 flake8-bugbear
 isort
 pytest-timeout
+pytest
