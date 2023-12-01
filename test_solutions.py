@@ -4,7 +4,7 @@ import json
 import pytest
 
 
-@pytest.fixture(scope="session", params=list(range(2017, 2023)))
+@pytest.fixture(scope="session", params=list(range(2017, 2024)))
 def year(request):
     return request.param
 
