@@ -1,3 +1,4 @@
+# type: ignore
 from math import prod
 from typing import Dict
 

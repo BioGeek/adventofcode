@@ -51,7 +51,7 @@ class Layout:
 
     def neighbours(self, seat: Seat) -> Generator:
         x, y = seat.x, seat.y
-        for (new_x, new_y) in (
+        for new_x, new_y in (
             (x + 1, y),
             (x - 1, y),
             (x, y + 1),

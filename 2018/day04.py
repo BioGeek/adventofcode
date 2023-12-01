@@ -21,11 +21,13 @@ def main(part=1, data=None):  # noqa: C901
     overlapping = {}
     for key, group in groupby(dicts, key=lambda d: "Guard" in d["line"]):
         if key:
-            g = re.match(r"Guard #(\d+) begins shift", list(group)[0]["line"])
+            g = re.match(
+                r"Guard #(\d+) begins shift", list(group)[0]["line"]  # noqa:B031
+            )
             guard = g.group(1)
             # print(guard)
         else:
-            for asleep, wakesup in zip(group, group):
+            for asleep, wakesup in zip(group, group):  # noqa:B031
                 assert "asleep" in asleep["line"]
                 assert "wakes up" in wakesup["line"]
                 mins_sleeping = int(wakesup["mins"]) - int(asleep["mins"])
@@ -52,7 +54,6 @@ def main(part=1, data=None):  # noqa: C901
         )
         return int(guard_most_asleep) * most_overlapping_minute
     else:
-
         minute_most_frequently_asleep = 0
         guard_most_frequently_asleep = None
         times_appeared = 0

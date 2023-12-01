@@ -64,7 +64,6 @@ def main(lines: List[str], part: int = 1) -> int:
 
 
 if __name__ == "__main__":
-
     """
         G - H       J - K - L
         /           /

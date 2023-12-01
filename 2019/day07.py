@@ -116,7 +116,7 @@ def main(data: str = "", part: int = 1) -> int:
         data = get_data()
     max_thruster = 0
     if part == 1:
-        for (a, b, c, d, e) in itertools.permutations(range(5)):
+        for a, b, c, d, e in itertools.permutations(range(5)):
             A = calculate(data, (a, 0))
             B = calculate(data, (b, A))
             C = calculate(data, (c, B))
@@ -126,7 +126,7 @@ def main(data: str = "", part: int = 1) -> int:
                 max_thruster = thruster
     else:
         thruster = None  # type: ignore
-        for (a, b, c, d, e) in itertools.permutations(range(5, 10)):
+        for a, b, c, d, e in itertools.permutations(range(5, 10)):
             while True:
                 inp = thruster if thruster is not None else 0
                 A = calculate(data, (a, inp))
