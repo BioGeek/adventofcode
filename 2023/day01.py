@@ -1,3 +1,5 @@
+from collections.abc import Iterator
+
 DIGITS = {
     "one": "1",
     "two": "2",
@@ -11,7 +13,7 @@ DIGITS = {
 }
 
 
-def find_offsets(haystack, needle):
+def find_offsets(haystack: str, needle: str) -> Iterator[int]:
     """
     Find the start of all (possibly-overlapping) instances of needle in haystack
     Credit: https://stackoverflow.com/a/11122388/50065
@@ -37,7 +39,6 @@ def get_calibartion_value(line: str, part: int = 1) -> int:
 
     first = locations[min(locations.keys())]
     last = locations[max(locations.keys())]
-    # print(line, locations, first, last, DIGITS.get(first, first), DIGITS.get(last, last))
     return int(DIGITS.get(first, first) + DIGITS.get(last, last))
 
 
@@ -79,5 +80,10 @@ xtwone3four
 4nineeightseven2
 zoneight234
 7pqrstsixteen"""
+
+    assert (
+        sum(get_calibartion_value(line, part=2) for line in document.splitlines())
+        == 281
+    )
 
     print(main(part=2))
