@@ -33,10 +33,7 @@ def possible_games(games: str) -> int:
 
 
 def fewest_number_of_cubes_of_each_color(cubes: List[Dict[str, int]]) -> Dict[str, int]:
-    minimal = {}
-    for color in COLORS:
-        minimal[color] = max(cube.get(color, 0) for cube in cubes)
-    return minimal
+    return {color: max(cube.get(color, 0) for cube in cubes) for color in COLORS}
 
 
 def power(cubes: List[Dict[str, int]]) -> int:
