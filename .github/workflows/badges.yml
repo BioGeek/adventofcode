@@ -18,6 +18,16 @@ jobs:
         with:
           userid: 23810                          # your user id, see setup on how to obtain
           session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
+          year: 2024                                                                                     # The year for which stats should be retrieved
+          file: 'README.md'                                                                              # The file that contains the badges
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow&year=2024)'             # Regular expression that finds the content of the stars badge in your file.
+          daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-red&year=2024)'  # Regular expression that finds the content of the days completed badge in your file.
+
+
+      - uses: joblo2213/aoc-badges-action@v3
+        with:
+          userid: 23810                          # your user id, see setup on how to obtain
+          session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
           year: 2023                                                                                     # The year for which stats should be retrieved
           file: 'README.md'                                                                              # The file that contains the badges
           starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow&year=2023)'             # Regular expression that finds the content of the stars badge in your file.
