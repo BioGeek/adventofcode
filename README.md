@@ -3,8 +3,8 @@ My [Advent Of Code](https://adventofcode.com/) solutions in Python.
 
 | Year | days completed | stars collected   |
 |---|---|---|
-| 2024 | ![](https://img.shields.io/badge/days%20completed-0-red&year=2024) | ![](https://img.shields.io/badge/stars%20⭐-0-yellow&year=2024) |
-| 2023 | ![](https://img.shields.io/badge/days%20completed-0-red&year=2023) | ![](https://img.shields.io/badge/stars%20⭐-0-yellow&year=2023) |
+| 2024 | ![](https://img.shields.io/badge/days%20completed-1-red&year=2024) | ![](https://img.shields.io/badge/stars%20⭐-2-yellow&year=2024) |
+| 2023 | ![](https://img.shields.io/badge/days%20completed-2-red&year=2023) | ![](https://img.shields.io/badge/stars%20⭐-4-yellow&year=2023) |
 | 2022 | ![](https://img.shields.io/badge/days%20completed-6-red&year=2022) | ![](https://img.shields.io/badge/stars%20⭐-12-yellow&year=2022) |
 | 2021 | ![](https://img.shields.io/badge/days%20completed-8-red&year=2021) | ![](https://img.shields.io/badge/stars%20⭐-17-yellow&year=2021) |
 | 2020 | ![](https://img.shields.io/badge/days%20completed-8-red&year=2020) | ![](https://img.shields.io/badge/stars%20⭐-18-yellow&year=2020) |
