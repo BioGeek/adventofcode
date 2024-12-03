@@ -1,7 +1,20 @@
-def safe_count(reports):
-    return sum(
-        is_safe(list(map(int, report.split()))) for report in reports.splitlines()
-    )
+def safe_count(reports, part=1):
+    if part == 1:
+        return sum(
+            is_safe(list(map(int, report.split()))) for report in reports.splitlines()
+        )
+    else:
+        safe_lines = 0
+        for report in reports.splitlines():
+            report = list(map(int, report.split()))
+            if is_safe(report):
+                safe_lines += 1
+            else:
+                # brute force
+                safe_lines += any(
+                    is_safe(report[:i] + report[i + 1 :]) for i in range(len(report))
+                )
+        return safe_lines
 
 
 def is_safe(report):
@@ -25,7 +38,7 @@ def is_gradually_chaging(report):
 def main(part: int = 1) -> int:
     with open("2024/data/day02.txt") as f:
         reports = f.read()
-    return safe_count(reports)
+    return safe_count(reports, part)
 
 
 if __name__ == "__main__":
@@ -39,3 +52,7 @@ if __name__ == "__main__":
     assert safe_count(reports) == 2
 
     print(main())
+
+    assert safe_count(reports, part=2) == 4
+
+    print(main(part=2))
