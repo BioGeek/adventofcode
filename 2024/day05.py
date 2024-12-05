@@ -20,10 +20,11 @@ def in_right_order(update, ordering_rules):
 
 
 def order(update, ordering_rules):
-    print(update)
-    for n in update:
-        print(n, ordering_rules[n])
-    return sorted(update, key=lambda n: len(ordering_rules[n]), reverse=True)
+    return sorted(
+        update,
+        key=lambda n: len(set(i for i in ordering_rules[n] if i in update)),
+        reverse=True,
+    )
 
 
 def middle_page_number(protocol, part=1):
