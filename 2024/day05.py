@@ -3,10 +3,10 @@ from collections import defaultdict
 
 def parse(protocol):
     top, bottom = protocol.split("\n\n")
-    ordering_rules = defaultdict(list)
+    ordering_rules = defaultdict(set)
     for line in top.splitlines():
         key, value = map(int, line.split("|"))
-        ordering_rules[key].append(value)
+        ordering_rules[key].add(value)
     updates = [list(map(int, line.split(","))) for line in bottom.splitlines()]
     return ordering_rules, updates
 
@@ -14,9 +14,16 @@ def parse(protocol):
 def in_right_order(update, ordering_rules):
     for i in range(len(update)):
         number, *rest = update[i:]
-        if not set(rest).issubset(set(ordering_rules[number])):
+        if not set(rest).issubset(ordering_rules[number]):
             return False
     return True
+
+
+def order(update, ordering_rules):
+    print(update)
+    for n in update:
+        print(n, ordering_rules[n])
+    return sorted(update, key=lambda n: len(ordering_rules[n]), reverse=True)
 
 
 def middle_page_number(protocol, part=1):
@@ -28,7 +35,9 @@ def middle_page_number(protocol, part=1):
             idx = len(update) // 2
             total += update[idx]
         if not is_in_right_order and part == 2:
-            pass
+            new_update = order(update, ordering_rules)
+            idx = len(new_update) // 2
+            total += new_update[idx]
     return total
 
 
@@ -71,3 +80,7 @@ if __name__ == "__main__":
     assert middle_page_number(protocol) == 143
 
     print(main())
+
+    assert middle_page_number(protocol, part=2) == 123
+
+    print(main(part=2))
