@@ -31,7 +31,7 @@ def parse(lines):
         for x, content in enumerate(row)
         if content == "#"
     ]
-    visited = 0
+    visited = set()
     return Grid(current, heading, obstacles, visited)
 
 
@@ -56,15 +56,31 @@ def visualize(obstacles, nxt, heading):
 def walk(grid):
     """Walk one step and simulate the new state of the grid"""
     current, heading, obstacles, visited = grid
+    visited.add(current)
+    # visualize(obstacles, current, heading)
     if next_step(current, heading) in obstacles:
         print("turning")
         heading = turn_right(heading)
     nxt = next_step(current, heading)
-    visited += 1
-    print(nxt, heading, visited)
-    visualize(obstacles, nxt, heading)
-    print()
+    # print(current, nxt, heading, visited)
+    # print()
     return Grid(nxt, heading, obstacles, visited)
+
+
+def visit(map):
+    lines = [list(line) for line in map.strip().splitlines()]
+    max_y = len(lines)
+    max_x = len(lines[0])
+    grid = parse(lines)
+    while (0 <= grid.current[0] <= max_x) and (0 <= grid.current[1] <= max_y):
+        grid = walk(grid)
+    return len(grid.visited) - 1
+
+
+def main(part: int = 1) -> int:
+    with open("2024/data/day05.txt") as f:
+        map = f.read()
+    return visit(map)
 
 
 if __name__ == "__main__":
@@ -80,14 +96,6 @@ if __name__ == "__main__":
 #.........
 ......#..."""
 
-    # repeat(50, walk, parse(map))
-    lines = [list(line) for line in map.strip().splitlines()]
-    max_y = len(lines)
-    max_x = len(lines[0])
-    grid = parse(lines)
-    walking = True
-    while walking:
-        grid = walk(grid)
-        if not (0 <= grid.current[0] <= max_x) or not (0 <= grid.current[1] <= max_y):
-            walking = False
-            print(grid.visited)
+    assert visit(map) == 41
+
+    print(main())
