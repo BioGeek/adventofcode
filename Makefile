@@ -6,7 +6,7 @@
 
 ## Install Python Dependencies
 install:
-	pip install -r requirements.txt
+	uv sync --dev
 	pre-commit install
 
 ## Run pre-commit on all files

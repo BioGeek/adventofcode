@@ -59,7 +59,7 @@ def walk(grid):
     visited.add(current)
     # visualize(obstacles, current, heading)
     if next_step(current, heading) in obstacles:
-        print("turning")
+        # print("turning")
         heading = turn_right(heading)
     nxt = next_step(current, heading)
     # print(current, nxt, heading, visited)
@@ -78,7 +78,7 @@ def visit(map):
 
 
 def main(part: int = 1) -> int:
-    with open("2024/data/day05.txt") as f:
+    with open("2024/data/day06.txt") as f:
         map = f.read()
     return visit(map)
 
